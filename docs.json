@@ -1,0 +1,3202 @@
+{
+	"id": 0,
+	"name": "Web-Utilities - v0.0.1",
+	"kind": 0,
+	"flags": {},
+	"originalName": "Web-Utilities",
+	"children": [
+		{
+			"id": 1,
+			"name": "debug",
+			"kind": 1,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 2,
+					"name": "default",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {},
+					"type": {
+						"type": "reference",
+						"name": "DebugUtil"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Properties",
+					"kind": 1024,
+					"children": [
+						2
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "debug.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 3,
+			"name": "dom",
+			"kind": 1,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 20,
+					"name": "hasUserMedia",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"sources": [
+						{
+							"fileName": "dom.ts",
+							"line": 10,
+							"character": 25
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 15,
+					"name": "isChrome",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"sources": [
+						{
+							"fileName": "dom.ts",
+							"line": 4,
+							"character": 21
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 17,
+					"name": "isFirefox",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"sources": [
+						{
+							"fileName": "dom.ts",
+							"line": 6,
+							"character": 22
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 19,
+					"name": "isMobile",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"sources": [
+						{
+							"fileName": "dom.ts",
+							"line": 8,
+							"character": 21
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 18,
+					"name": "isOpera",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"sources": [
+						{
+							"fileName": "dom.ts",
+							"line": 7,
+							"character": 20
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 16,
+					"name": "isSafari",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"sources": [
+						{
+							"fileName": "dom.ts",
+							"line": 5,
+							"character": 21
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 14,
+					"name": "isiOS",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"sources": [
+						{
+							"fileName": "dom.ts",
+							"line": 3,
+							"character": 18
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 12,
+					"name": "isiPad",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"sources": [
+						{
+							"fileName": "dom.ts",
+							"line": 1,
+							"character": 19
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 13,
+					"name": "isiPhone",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"sources": [
+						{
+							"fileName": "dom.ts",
+							"line": 2,
+							"character": 21
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 21,
+					"name": "supportsWebp",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"sources": [
+						{
+							"fileName": "dom.ts",
+							"line": 15,
+							"character": 25
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 4,
+					"name": "delay",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "dom.ts",
+							"line": 28,
+							"character": 21
+						}
+					],
+					"signatures": [
+						{
+							"id": 5,
+							"name": "delay",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Delays the call in X-seconds",
+								"returns": "A Promise once the delay is complete\n"
+							},
+							"parameters": [
+								{
+									"id": 6,
+									"name": "seconds",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "In seconds"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					]
+				},
+				{
+					"id": 7,
+					"name": "fileName",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "dom.ts",
+							"line": 43,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 8,
+							"name": "fileName",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Strips apart the string to retrieve a file name without the file extension",
+								"returns": "The file name\n"
+							},
+							"parameters": [
+								{
+									"id": 9,
+									"name": "path",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The URL"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					]
+				},
+				{
+					"id": 10,
+					"name": "guid",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "dom.ts",
+							"line": 53,
+							"character": 20
+						}
+					],
+					"signatures": [
+						{
+							"id": 11,
+							"name": "guid",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "A generated unique ID",
+								"returns": "A unique ID\n"
+							},
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Variables",
+					"kind": 32,
+					"children": [
+						20,
+						15,
+						17,
+						19,
+						18,
+						16,
+						14,
+						12,
+						13,
+						21
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						4,
+						7,
+						10
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "dom.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 22,
+			"name": "loader",
+			"kind": 1,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 23,
+					"name": "default",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {},
+					"type": {
+						"type": "reference",
+						"name": "LoadHelper"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Properties",
+					"kind": 1024,
+					"children": [
+						23
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "loader.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 24,
+			"name": "math",
+			"kind": 1,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 102,
+					"name": "DEGREES",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"sources": [
+						{
+							"fileName": "math.ts",
+							"line": 1,
+							"character": 20
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "number"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 105,
+					"name": "HALF_PI",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"sources": [
+						{
+							"fileName": "math.ts",
+							"line": 4,
+							"character": 20
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "number"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 103,
+					"name": "RADIANS",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"sources": [
+						{
+							"fileName": "math.ts",
+							"line": 2,
+							"character": 20
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "number"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 104,
+					"name": "TWO_PI",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"sources": [
+						{
+							"fileName": "math.ts",
+							"line": 3,
+							"character": 19
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "number"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 25,
+					"name": "between",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "math.ts",
+							"line": 12,
+							"character": 23
+						}
+					],
+					"signatures": [
+						{
+							"id": 26,
+							"name": "between",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Checks if the number is between both the min/max numbers"
+							},
+							"parameters": [
+								{
+									"id": 27,
+									"name": "min",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The minimum number"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 28,
+									"name": "max",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The maximum number"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 29,
+									"name": "value",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Your value\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "boolean"
+							}
+						}
+					]
+				},
+				{
+					"id": 30,
+					"name": "clamp",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "math.ts",
+							"line": 22,
+							"character": 21
+						}
+					],
+					"signatures": [
+						{
+							"id": 31,
+							"name": "clamp",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Restricts your number to the min/max values"
+							},
+							"parameters": [
+								{
+									"id": 32,
+									"name": "min",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Minimum value"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 33,
+									"name": "max",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Maximum value"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 34,
+									"name": "value",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Your value\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					]
+				},
+				{
+					"id": 90,
+					"name": "cubicBezier",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "math.ts",
+							"line": 172,
+							"character": 27
+						}
+					],
+					"signatures": [
+						{
+							"id": 91,
+							"name": "cubicBezier",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Cubic Bezier easing"
+							},
+							"parameters": [
+								{
+									"id": 92,
+									"name": "percent",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "A number between 0 - 1"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 93,
+									"name": "x0",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "First vector X"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 94,
+									"name": "y0",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "First vector Y"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 95,
+									"name": "x1",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Second vector X"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 96,
+									"name": "y1",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Second vector Y\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					]
+				},
+				{
+					"id": 56,
+					"name": "distance",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "math.ts",
+							"line": 72,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 57,
+							"name": "distance",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "The distance between 1 number and another"
+							},
+							"parameters": [
+								{
+									"id": 58,
+									"name": "x",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Point A"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 59,
+									"name": "y",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Point B\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					]
+				},
+				{
+					"id": 60,
+					"name": "distance2",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "math.ts",
+							"line": 84,
+							"character": 25
+						}
+					],
+					"signatures": [
+						{
+							"id": 61,
+							"name": "distance2",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "The 2D distance between 1 2D Vector and another"
+							},
+							"parameters": [
+								{
+									"id": 62,
+									"name": "x1",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "First Vector X"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 63,
+									"name": "y1",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "First Vector Y"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 64,
+									"name": "x2",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Second Vector X"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 65,
+									"name": "y2",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Second Vector Y\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					]
+				},
+				{
+					"id": 66,
+					"name": "distance3",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "math.ts",
+							"line": 99,
+							"character": 25
+						}
+					],
+					"signatures": [
+						{
+							"id": 67,
+							"name": "distance3",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "The 3D distance between 1 3D Vector and another"
+							},
+							"parameters": [
+								{
+									"id": 68,
+									"name": "x1",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "First Vector X"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 69,
+									"name": "y1",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "First Vector Y"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 70,
+									"name": "z1",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "First Vector Z"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 71,
+									"name": "x2",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Second Vector X"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 72,
+									"name": "y2",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Second Vector Y"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 73,
+									"name": "z2",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Second Vector Z\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					]
+				},
+				{
+					"id": 78,
+					"name": "getAngle",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "math.ts",
+							"line": 125,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 79,
+							"name": "getAngle",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "The angle between 2 2D Vectors"
+							},
+							"parameters": [
+								{
+									"id": 80,
+									"name": "x0",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "First Vector X"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 81,
+									"name": "y0",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "First Vector Y"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 82,
+									"name": "x1",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Second Vector X"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 83,
+									"name": "y1",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Second Vector Y\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					]
+				},
+				{
+					"id": 45,
+					"name": "map",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "math.ts",
+							"line": 54,
+							"character": 19
+						}
+					],
+					"signatures": [
+						{
+							"id": 46,
+							"name": "map",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Transforms your value from one set to another (ie. 0 - 1 to 0 - 10, etc)"
+							},
+							"parameters": [
+								{
+									"id": 47,
+									"name": "min1",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The original minimum value"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 48,
+									"name": "max1",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The original maximum value"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 49,
+									"name": "min2",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The new minimum value"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 50,
+									"name": "max2",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The new maximum value"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 51,
+									"name": "value",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "A value between 0 - 1\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					]
+				},
+				{
+					"id": 40,
+					"name": "mix",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "math.ts",
+							"line": 42,
+							"character": 19
+						}
+					],
+					"signatures": [
+						{
+							"id": 41,
+							"name": "mix",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Interpolates values between the min and max values"
+							},
+							"parameters": [
+								{
+									"id": 42,
+									"name": "min",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Minimum value"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 43,
+									"name": "max",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Maximum value"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 44,
+									"name": "value",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Your value\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					]
+				},
+				{
+					"id": 97,
+					"name": "mixArrays",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "math.ts",
+							"line": 214,
+							"character": 25
+						}
+					],
+					"signatures": [
+						{
+							"id": 98,
+							"name": "mixArrays",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Interpolates between 2 arrays"
+							},
+							"parameters": [
+								{
+									"id": 99,
+									"name": "start",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								},
+								{
+									"id": 100,
+									"name": "end",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								},
+								{
+									"id": 101,
+									"name": "value",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Your value between 0 - 1\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "intrinsic",
+									"name": "number"
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 35,
+					"name": "normalize",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "math.ts",
+							"line": 32,
+							"character": 25
+						}
+					],
+					"signatures": [
+						{
+							"id": 36,
+							"name": "normalize",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Ensures your value is between 0 - 1"
+							},
+							"parameters": [
+								{
+									"id": 37,
+									"name": "min",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Minimum value"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 38,
+									"name": "max",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Maximum value"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 39,
+									"name": "value",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Your value\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					]
+				},
+				{
+					"id": 74,
+					"name": "random",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "math.ts",
+							"line": 114,
+							"character": 22
+						}
+					],
+					"signatures": [
+						{
+							"id": 75,
+							"name": "random",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "A random number between 2 numbers"
+							},
+							"parameters": [
+								{
+									"id": 76,
+									"name": "min",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Minimum number"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 77,
+									"name": "max",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Maximum number\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					]
+				},
+				{
+					"id": 52,
+					"name": "roundTo",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "math.ts",
+							"line": 63,
+							"character": 23
+						}
+					],
+					"signatures": [
+						{
+							"id": 53,
+							"name": "roundTo",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Rounds your value to a specific amount of digits"
+							},
+							"parameters": [
+								{
+									"id": 54,
+									"name": "value",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Your number"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 55,
+									"name": "digits",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "How many decimals the number should have\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									},
+									"defaultValue": "1"
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					]
+				},
+				{
+					"id": 87,
+					"name": "toDeg",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "math.ts",
+							"line": 141,
+							"character": 21
+						}
+					],
+					"signatures": [
+						{
+							"id": 88,
+							"name": "toDeg",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Translates radians to degrees"
+							},
+							"parameters": [
+								{
+									"id": 89,
+									"name": "radians",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Your value\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					]
+				},
+				{
+					"id": 84,
+					"name": "toRad",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "math.ts",
+							"line": 133,
+							"character": 21
+						}
+					],
+					"signatures": [
+						{
+							"id": 85,
+							"name": "toRad",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Translates degrees to radians"
+							},
+							"parameters": [
+								{
+									"id": 86,
+									"name": "degrees",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Your value\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Variables",
+					"kind": 32,
+					"children": [
+						102,
+						105,
+						103,
+						104
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						25,
+						30,
+						90,
+						56,
+						60,
+						66,
+						78,
+						45,
+						40,
+						97,
+						35,
+						74,
+						52,
+						87,
+						84
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "math.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 106,
+			"name": "raf",
+			"kind": 1,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 107,
+					"name": "default",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {},
+					"type": {
+						"type": "reference",
+						"name": "RafInstance"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Properties",
+					"kind": 1024,
+					"children": [
+						107
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "raf.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 108,
+			"name": "three",
+			"kind": 1,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 159,
+					"name": "DoubleFBO",
+					"kind": 128,
+					"kindString": "Class",
+					"flags": {},
+					"comment": {
+						"shortText": "Meant for compute shaders (aka GPGPU shaders)"
+					},
+					"children": [
+						{
+							"id": 160,
+							"name": "constructor",
+							"kind": 512,
+							"kindString": "Constructor",
+							"flags": {},
+							"signatures": [
+								{
+									"id": 161,
+									"name": "new DoubleFBO",
+									"kind": 16384,
+									"kindString": "Constructor signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 162,
+											"name": "width",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										},
+										{
+											"id": 163,
+											"name": "height",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										},
+										{
+											"id": 164,
+											"name": "params",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "any"
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"id": 159,
+										"name": "DoubleFBO"
+									},
+									"overwrites": {
+										"type": "reference",
+										"id": 147,
+										"name": "FBO.constructor"
+									}
+								}
+							],
+							"overwrites": {
+								"type": "reference",
+								"id": 146,
+								"name": "FBO.constructor"
+							}
+						},
+						{
+							"id": 166,
+							"name": "flip",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "three.ts",
+									"line": 204,
+									"character": 6
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Boolean"
+							},
+							"defaultValue": "true"
+						},
+						{
+							"id": 173,
+							"name": "rt1",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "three.ts",
+									"line": 162,
+									"character": 5
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "any"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"id": 151,
+								"name": "FBO.rt1"
+							}
+						},
+						{
+							"id": 165,
+							"name": "rt2",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "three.ts",
+									"line": 202,
+									"character": 5
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "any"
+							}
+						},
+						{
+							"id": 174,
+							"name": "target",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "three.ts",
+									"line": 164,
+									"character": 8
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "any"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"id": 152,
+								"name": "FBO.target"
+							}
+						},
+						{
+							"id": 175,
+							"name": "texture",
+							"kind": 262144,
+							"kindString": "Accessor",
+							"flags": {},
+							"comment": {},
+							"sources": [
+								{
+									"fileName": "three.ts",
+									"line": 193,
+									"character": 13
+								}
+							],
+							"getSignature": [
+								{
+									"id": 176,
+									"name": "texture",
+									"kind": 524288,
+									"kindString": "Get signature",
+									"flags": {},
+									"comment": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								}
+							],
+							"inheritedFrom": {
+								"type": "reference",
+								"id": 157,
+								"name": "FBO.texture"
+							}
+						},
+						{
+							"id": 167,
+							"name": "resize",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "three.ts",
+									"line": 217,
+									"character": 8
+								}
+							],
+							"signatures": [
+								{
+									"id": 168,
+									"name": "resize",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"comment": {
+										"shortText": "Resizes the Render Targets"
+									},
+									"parameters": [
+										{
+											"id": 169,
+											"name": "width",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "The width of the Render Targets"
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										},
+										{
+											"id": 170,
+											"name": "height",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "The height of the Render Targets\n"
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "void"
+									},
+									"overwrites": {
+										"type": "reference",
+										"id": 154,
+										"name": "FBO.resize"
+									}
+								}
+							],
+							"overwrites": {
+								"type": "reference",
+								"id": 153,
+								"name": "FBO.resize"
+							}
+						},
+						{
+							"id": 171,
+							"name": "swap",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "three.ts",
+									"line": 225,
+									"character": 6
+								}
+							],
+							"signatures": [
+								{
+									"id": 172,
+									"name": "swap",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"comment": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "void"
+									}
+								}
+							]
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"kind": 512,
+							"children": [
+								160
+							]
+						},
+						{
+							"title": "Properties",
+							"kind": 1024,
+							"children": [
+								166,
+								173,
+								165,
+								174
+							]
+						},
+						{
+							"title": "Accessors",
+							"kind": 262144,
+							"children": [
+								175
+							]
+						},
+						{
+							"title": "Methods",
+							"kind": 2048,
+							"children": [
+								167,
+								171
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "three.ts",
+							"line": 201,
+							"character": 22
+						}
+					],
+					"extendedTypes": [
+						{
+							"type": "reference",
+							"id": 145,
+							"name": "FBO"
+						}
+					]
+				},
+				{
+					"id": 145,
+					"name": "FBO",
+					"kind": 128,
+					"kindString": "Class",
+					"flags": {},
+					"comment": {
+						"shortText": "A \"Frame Buffer Object\" to be used generative shaders"
+					},
+					"children": [
+						{
+							"id": 146,
+							"name": "constructor",
+							"kind": 512,
+							"kindString": "Constructor",
+							"flags": {},
+							"signatures": [
+								{
+									"id": 147,
+									"name": "new FBO",
+									"kind": 16384,
+									"kindString": "Constructor signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 148,
+											"name": "width",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										},
+										{
+											"id": 149,
+											"name": "height",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										},
+										{
+											"id": 150,
+											"name": "params",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "any"
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"id": 145,
+										"name": "FBO"
+									}
+								}
+							]
+						},
+						{
+							"id": 151,
+							"name": "rt1",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "three.ts",
+									"line": 162,
+									"character": 5
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "any"
+							}
+						},
+						{
+							"id": 152,
+							"name": "target",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "three.ts",
+									"line": 164,
+									"character": 8
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "any"
+							}
+						},
+						{
+							"id": 157,
+							"name": "texture",
+							"kind": 262144,
+							"kindString": "Accessor",
+							"flags": {},
+							"comment": {},
+							"sources": [
+								{
+									"fileName": "three.ts",
+									"line": 193,
+									"character": 13
+								}
+							],
+							"getSignature": [
+								{
+									"id": 158,
+									"name": "texture",
+									"kind": 524288,
+									"kindString": "Get signature",
+									"flags": {},
+									"comment": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								}
+							]
+						},
+						{
+							"id": 153,
+							"name": "resize",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "three.ts",
+									"line": 186,
+									"character": 8
+								}
+							],
+							"signatures": [
+								{
+									"id": 154,
+									"name": "resize",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"comment": {
+										"shortText": "Resizes the Render Target"
+									},
+									"parameters": [
+										{
+											"id": 155,
+											"name": "width",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "The width of the Render Target"
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										},
+										{
+											"id": 156,
+											"name": "height",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "The height of the Render Target\n"
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "void"
+									}
+								}
+							]
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"kind": 512,
+							"children": [
+								146
+							]
+						},
+						{
+							"title": "Properties",
+							"kind": 1024,
+							"children": [
+								151,
+								152
+							]
+						},
+						{
+							"title": "Accessors",
+							"kind": 262144,
+							"children": [
+								157
+							]
+						},
+						{
+							"title": "Methods",
+							"kind": 2048,
+							"children": [
+								153
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "three.ts",
+							"line": 161,
+							"character": 16
+						}
+					],
+					"extendedBy": [
+						{
+							"type": "reference",
+							"id": 159,
+							"name": "DoubleFBO"
+						}
+					]
+				},
+				{
+					"id": 177,
+					"name": "Pass",
+					"kind": 128,
+					"kindString": "Class",
+					"flags": {},
+					"comment": {
+						"shortText": "Renders your material off-screen"
+					},
+					"children": [
+						{
+							"id": 178,
+							"name": "constructor",
+							"kind": 512,
+							"kindString": "Constructor",
+							"flags": {},
+							"signatures": [
+								{
+									"id": 179,
+									"name": "new Pass",
+									"kind": 16384,
+									"kindString": "Constructor signature",
+									"flags": {},
+									"comment": {
+										"shortText": "A layer that can be used for post-processing, GPGPU, etc"
+									},
+									"parameters": [
+										{
+											"id": 180,
+											"name": "material",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "Usually either a ShaderMaterial or RawShaderMaterial\n"
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "any"
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"id": 177,
+										"name": "Pass"
+									}
+								}
+							]
+						},
+						{
+							"id": 181,
+							"name": "camera",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "three.ts",
+									"line": 239,
+									"character": 8
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "any"
+							},
+							"defaultValue": "..."
+						},
+						{
+							"id": 183,
+							"name": "material",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "three.ts",
+									"line": 243,
+									"character": 10
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "any"
+							}
+						},
+						{
+							"id": 184,
+							"name": "mesh",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "three.ts",
+									"line": 245,
+									"character": 6
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "any"
+							}
+						},
+						{
+							"id": 182,
+							"name": "scene",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "three.ts",
+									"line": 241,
+									"character": 7
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "any"
+							},
+							"defaultValue": "..."
+						},
+						{
+							"id": 185,
+							"name": "draw",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "three.ts",
+									"line": 260,
+									"character": 6
+								}
+							],
+							"signatures": [
+								{
+									"id": 186,
+									"name": "draw",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"comment": {
+										"shortText": "The customized draw call for the pass, usually so params can be updated/swapped"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "void"
+									}
+								}
+							]
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"kind": 512,
+							"children": [
+								178
+							]
+						},
+						{
+							"title": "Properties",
+							"kind": 1024,
+							"children": [
+								181,
+								183,
+								184,
+								182
+							]
+						},
+						{
+							"title": "Methods",
+							"kind": 2048,
+							"children": [
+								185
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "three.ts",
+							"line": 238,
+							"character": 17
+						}
+					]
+				},
+				{
+					"id": 143,
+					"name": "orthoCamera",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"sources": [
+						{
+							"fileName": "three.ts",
+							"line": 30,
+							"character": 24
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "any"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 144,
+					"name": "plane",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"sources": [
+						{
+							"fileName": "three.ts",
+							"line": 31,
+							"character": 18
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "any"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 117,
+					"name": "anchorGeometry",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "three.ts",
+							"line": 89,
+							"character": 30
+						}
+					],
+					"signatures": [
+						{
+							"id": 118,
+							"name": "anchorGeometry",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Updates your geometry to be offset"
+							},
+							"parameters": [
+								{
+									"id": 119,
+									"name": "geometry",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Your geometry"
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "reference",
+												"name": "Geometry"
+											},
+											{
+												"type": "reference",
+												"name": "BufferGeometry"
+											}
+										]
+									}
+								},
+								{
+									"id": 120,
+									"name": "x",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "X-offset"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 121,
+									"name": "y",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Y-offset"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 122,
+									"name": "z",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Z-offset\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					]
+				},
+				{
+					"id": 123,
+					"name": "anchorGeometryTL",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "three.ts",
+							"line": 102,
+							"character": 32
+						}
+					],
+					"signatures": [
+						{
+							"id": 124,
+							"name": "anchorGeometryTL",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Anchors your geometry to the top-left"
+							},
+							"parameters": [
+								{
+									"id": 125,
+									"name": "geometry",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Your geometry\n"
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "reference",
+												"name": "Geometry"
+											},
+											{
+												"type": "reference",
+												"name": "BufferGeometry"
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					]
+				},
+				{
+					"id": 109,
+					"name": "dispose",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "three.ts",
+							"line": 37,
+							"character": 23
+						}
+					],
+					"signatures": [
+						{
+							"id": 110,
+							"name": "dispose",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Disposes an item and it's children from memory"
+							},
+							"parameters": [
+								{
+									"id": 111,
+									"name": "object",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The item to be removed\n"
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "reference",
+												"name": "Object3D"
+											},
+											{
+												"type": "reference",
+												"name": "Mesh"
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					]
+				},
+				{
+					"id": 112,
+					"name": "parseShader",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "three.ts",
+							"line": 59,
+							"character": 27
+						}
+					],
+					"signatures": [
+						{
+							"id": 113,
+							"name": "parseShader",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Replaces a large string with Three's ShaderChunk.\nie: #include <common> gets replaced with the actual code",
+								"returns": "The compiled shader\n"
+							},
+							"parameters": [
+								{
+									"id": 114,
+									"name": "shader",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The block of code"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								},
+								{
+									"id": 115,
+									"name": "defines",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Custom array of defines to inject into your shader."
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "string"
+										}
+									}
+								},
+								{
+									"id": 116,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Custom array of options to inject into your shader."
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "string"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					]
+				},
+				{
+					"id": 129,
+					"name": "setBlendAdd",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "three.ts",
+							"line": 126,
+							"character": 27
+						}
+					],
+					"signatures": [
+						{
+							"id": 130,
+							"name": "setBlendAdd",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Sets the material blend mode to add"
+							},
+							"parameters": [
+								{
+									"id": 131,
+									"name": "material",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Your material\n"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Material"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					]
+				},
+				{
+					"id": 132,
+					"name": "setBlendMultiply",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "three.ts",
+							"line": 138,
+							"character": 32
+						}
+					],
+					"signatures": [
+						{
+							"id": 133,
+							"name": "setBlendMultiply",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Sets the material blend mode to multiply"
+							},
+							"parameters": [
+								{
+									"id": 134,
+									"name": "material",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Your material\n"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Material"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					]
+				},
+				{
+					"id": 126,
+					"name": "setBlendNormal",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "three.ts",
+							"line": 114,
+							"character": 30
+						}
+					],
+					"signatures": [
+						{
+							"id": 127,
+							"name": "setBlendNormal",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Sets the material blend mode to normal"
+							},
+							"parameters": [
+								{
+									"id": 128,
+									"name": "material",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Your material\n"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Material"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					]
+				},
+				{
+					"id": 135,
+					"name": "setBlendScreen",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "three.ts",
+							"line": 150,
+							"character": 30
+						}
+					],
+					"signatures": [
+						{
+							"id": 136,
+							"name": "setBlendScreen",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Sets the material blend mode to screen"
+							},
+							"parameters": [
+								{
+									"id": 137,
+									"name": "material",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Your material\n"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Material"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					]
+				},
+				{
+					"id": 138,
+					"name": "updateTextureData",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "three.ts",
+							"line": 270,
+							"character": 39
+						}
+					],
+					"signatures": [
+						{
+							"id": 139,
+							"name": "updateTextureData",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Creates a Texture from the SVG and returns the texture when ready"
+							},
+							"parameters": [
+								{
+									"id": 140,
+									"name": "svgElement",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Your SVG element"
+									},
+									"type": {
+										"type": "reference",
+										"name": "SVGElement"
+									}
+								},
+								{
+									"id": 141,
+									"name": "imgWid",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The content width"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 142,
+									"name": "imgHei",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The content height\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "reference",
+										"name": "Texture"
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Classes",
+					"kind": 128,
+					"children": [
+						159,
+						145,
+						177
+					]
+				},
+				{
+					"title": "Variables",
+					"kind": 32,
+					"children": [
+						143,
+						144
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						117,
+						123,
+						109,
+						112,
+						129,
+						132,
+						126,
+						135,
+						138
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "three.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		}
+	],
+	"groups": [
+		{
+			"title": "Modules",
+			"kind": 1,
+			"children": [
+				1,
+				3,
+				22,
+				24,
+				106,
+				108
+			]
+		}
+	]
+}
