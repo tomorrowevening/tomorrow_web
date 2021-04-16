@@ -34,6 +34,7 @@
   "files": [
     "dist/debug.js",
     "dist/dom.js",
+    "dist/index.js",
     "dist/loader.js",
     "dist/math.js",
     "dist/raf.js",
