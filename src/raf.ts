@@ -2,7 +2,7 @@
  * A singleton object that utilizes requestAnimationFrame and pauses/plays based
  * on the browser's 'visibilitychange' events, and also keeps time.
  */
-export class Raf {
+ export class Raf {
   playing: boolean = false;
 
   clock = {
@@ -32,7 +32,7 @@ export class Raf {
     }
   };
 
-  private callbacks: Array<() => void> = [];
+  private callbacks: Map<string, () => void> = new Map();
 
   private onRAF: any;
 
@@ -50,30 +50,21 @@ export class Raf {
 
   /**
    * Add a RAF listener
+   * @param name The name of the identifer
    * @param callback A function to be called every frame
    */
-  add(callback: () => void) {
-    const total = this.callbacks.length;
-    for (let i = 0; i < total; ++i) {
-      if (this.callbacks[i] === callback) {
-        return;
-      }
+  add(name: string, callback: () => void) {
+    if (!this.callbacks.has(name)) {
+      this.callbacks.set(name, callback);
     }
-    this.callbacks.push(callback);
   }
 
   /**
    * Removes a RAF listener
    * @param callback A function to be called every frame
    */
-  remove(callback: () => void) {
-    const total = this.callbacks.length;
-    for (let i = 0; i < total; ++i) {
-      if (this.callbacks[i] === callback) {
-        this.callbacks.splice(i, 1);
-        return;
-      }
-    }
+  remove(name: string) {
+    this.callbacks.delete(name);
   }
 
   /**
@@ -99,14 +90,10 @@ export class Raf {
   /**
    * Calls all callback functions
    */
-  update() {
-    if (this.playing) {
-      const total = this.callbacks.length;
-      for (let i = 0; i < total; ++i) {
-        this.callbacks[i]();
-      }
-      this.clock.update();
-    }
+   update() {
+     for (let callback of this.callbacks.values()) {
+       callback();
+     }
   }
 }
 

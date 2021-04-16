@@ -7,10 +7,7 @@ export const isFirefox = navigator.userAgent.indexOf('Firefox') > -1;
 export const isOpera = navigator.userAgent.toLowerCase().indexOf('op') > -1;
 export const isMobile = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/) !== null;
 
-export const hasUserMedia = (navigator.getUserMedia
-  || navigator.webkitGetUserMedia
-  || navigator.mozGetUserMedia
-) !== undefined;
+export const hasUserMedia = (navigator.getUserMedia) !== undefined;
 
 export const supportsWebp = (() => {
   const elem = document.createElement('canvas');

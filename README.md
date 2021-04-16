@@ -129,7 +129,6 @@ import {
     getAngle,
     toRad,
     toDeg,
-    smoothstep,
     cubicBezier,
     mixArrays
 } from 'tomorrow_web/math';
@@ -152,7 +151,6 @@ console.log(
     `getAngle: ${getAngle(0, 0, 100, 100)}\n`,
     `toRad: ${toRad(180)}\n`,
     `toDeg: ${toDeg(Math.PI)}\n`,
-    `smoothstep: ${smoothstep(0, 1, 0.25)}\n`,
     `cubicBezier: ${cubicBezier(0.25, 0.19, 1, 0.22, 1)}\n`,
     `mixArrays: ${mixArrays([0, 0, 0], [10, 20, 30], 0.5)}`
 );
