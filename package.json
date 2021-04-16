@@ -1,9 +1,9 @@
 {
   "name": "tomorrow_web",
-  "version": "0.0.96",
+  "version": "0.0.961",
   "description": "Web Utilities",
-  "main": "dist",
-  "types": "dist/types.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean"
