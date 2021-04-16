@@ -5,7 +5,6 @@ import {
   CustomBlending,
   DstColorFactor,
   FloatType,
-  Geometry,
   HalfFloatType,
   LinearFilter,
   Material,
@@ -93,7 +92,7 @@ export function parseShader(shader: string, defines: Array<string>, options: Arr
  * @param z Z-offset
  */
 export function anchorGeometry(
-  geometry: Geometry | BufferGeometry,
+  geometry: BufferGeometry,
   x: number,
   y: number,
   z: number
@@ -105,7 +104,7 @@ export function anchorGeometry(
  * Anchors your geometry to the top-left
  * @param geometry Your geometry
  */
-export function anchorGeometryTL(geometry: Geometry | BufferGeometry) {
+export function anchorGeometryTL(geometry: BufferGeometry) {
   geometry.computeBoundingBox();
   const box = geometry.boundingBox;
   const x = (box.max.x - box.min.x) / 2;

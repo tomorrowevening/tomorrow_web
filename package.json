@@ -1,8 +1,9 @@
 {
   "name": "tomorrow_web",
-  "version": "0.0.93",
+  "version": "0.0.96",
   "description": "Web Utilities",
   "main": "dist",
+  "types": "dist/types.d.ts",
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean"
@@ -39,8 +40,5 @@
     "dist/three.js",
     "LICENSE",
     "README.md"
-  ],
-  "directories": {
-    "dist": "dist"
-  }
+  ]
 }
