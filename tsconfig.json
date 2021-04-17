@@ -1,16 +1,17 @@
 {
   "compilerOptions": { 
     "declaration": true,
-    "declarationDir": "./declarations",
+    "declarationDir": "./dist",
     "downlevelIteration": true,
-    "outDir": "./",
+    "outDir": "./dist",
+    "rootDir": "./src",
     "removeComments": true,
     "moduleResolution": "node",
     "target": "es5",
     "allowSyntheticDefaultImports": true,
     "suppressImplicitAnyIndexErrors": true,
     "forceConsistentCasingInFileNames": true,
-    "sourceMap": false
+    "sourceMap": false,
   },
   "include": [
     "src/**/*"
