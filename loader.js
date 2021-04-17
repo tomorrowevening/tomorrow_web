@@ -229,4 +229,3 @@ function LoaderUtil() {
 }
 var loader = LoaderUtil();
 exports.default = loader;
-//# sourceMappingURL=loader.js.map

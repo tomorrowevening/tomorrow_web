@@ -37,4 +37,3 @@ function guid() {
     return (Date.now() + Math.round(Math.random() * 99999)).toString();
 }
 exports.guid = guid;
-//# sourceMappingURL=dom.js.map

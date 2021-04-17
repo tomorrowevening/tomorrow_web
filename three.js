@@ -236,4 +236,3 @@ function updateTextureData(svgElement, imgWid, imgHei) {
     });
 }
 exports.updateTextureData = updateTextureData;
-//# sourceMappingURL=three.js.map

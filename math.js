@@ -121,4 +121,3 @@ function mixArrays(start, end, value) {
     return result;
 }
 exports.mixArrays = mixArrays;
-//# sourceMappingURL=math.js.map
