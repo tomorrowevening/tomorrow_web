@@ -1,7 +1,7 @@
 {
   "compilerOptions": { 
     "declaration": true,
-    "declarationDir": "./",
+    "declarationDir": "./declarations",
     "downlevelIteration": true,
     "outDir": "./",
     "removeComments": true,
@@ -16,6 +16,7 @@
     "src/**/*"
   ],
   "exclude": [
+    "declarations",
     "node_modules"
   ]
 }
