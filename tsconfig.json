@@ -16,7 +16,6 @@
     "src/**/*"
   ],
   "exclude": [
-    "declarations",
     "node_modules"
   ]
 }

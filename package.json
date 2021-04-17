@@ -1,17 +1,13 @@
 {
   "name": "tomorrow_web",
-  "version": "0.0.966",
+  "version": "0.0.967",
   "description": "Web Utilities",
   "main": "index.js",
   "types": "./declarations",
   "scripts": {
-    "cleanDebug": "rm declarations/debug.d.ts && rm debug.js",
-    "cleanDom": "rm declarations/dom.d.ts && rm dom.js",
-    "cleanLoader": "rm declarations/loader.d.ts && rm loader.js",
-    "cleanMath": "rm declarations/math.d.ts && rm math.js",
-    "cleanRaf": "rm declarations/raf.d.ts && rm raf.js",
-    "cleanThree": "rm declarations/three.d.ts && rm three.js",
-    "clean": "npm run cleanDebug && npm run cleanDom && npm run cleanLoader && npm run cleanMath && npm run cleanRaf && npm run cleanThree",
+    "cleanFiles": "rm debug.js && rm dom.js && rm loader.js && rm math.js && rm raf.js && rm three.js",
+    "cleanDeclarations": "rm -rf declarations",
+    "clean": "npm run cleanFiles && npm run cleanDeclarations",
     "build": "tsc --build"
   },
   "repository": {
