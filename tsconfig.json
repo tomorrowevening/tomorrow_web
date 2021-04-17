@@ -1,9 +1,9 @@
 {
   "compilerOptions": { 
     "declaration": true,
-    "declarationDir": "./dist",
+    "declarationDir": "./",
     "downlevelIteration": true,
-    "outDir": "./dist",
+    "outDir": "./",
     "rootDir": "./src",
     "removeComments": true,
     "moduleResolution": "node",
