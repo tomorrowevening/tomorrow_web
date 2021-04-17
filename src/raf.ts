@@ -2,60 +2,56 @@
  * A singleton object that utilizes requestAnimationFrame and pauses/plays based
  * on the browser's 'visibilitychange' events, and also keeps time.
  */
-export class Raf {
-  playing: boolean = false;
+function RafUtil() {
+  this.playing = false;
 
-  clock = {
+  this.clock = {
     elapsed: 0,
     delta: 0,
     start: 0,
     last: 0,
-    now: () => {
+    now: function() {
       return performance.now();
     },
-    seconds: () => {
-      return this.clock.elapsed / 1000;
+    seconds: function() {
+      return this.elapsed / 1000;
     },
-    restart: () => {
-      this.clock.delta = 0;
-      this.clock.elapsed = 0;
+    restart: function() {
+      this.delta = 0;
+      this.elapsed = 0;
       const now = this.clock.now();
-      this.clock.start = now;
-      this.clock.last = now;
+      this.start = now;
+      this.last = now;
     },
-    update: () => {
-      const now = this.clock.now();
-      this.clock.delta = now - this.clock.last;
-      if (this.clock.delta > 1000) this.clock.delta = 0;
-      this.clock.elapsed += this.clock.delta;
-      this.clock.last = now;
+    update: function() {
+      const now = this.now();
+      this.delta = now - this.last;
+      if (this.delta > 1000) this.delta = 0;
+      this.elapsed += this.delta;
+      this.last = now;
     }
   };
 
-  private callbacks: Map<string, () => void> = new Map();
+  const callbacks: Map<string, () => void> = new Map();
 
-  private onRAF: any;
+  let onRAF: any;
 
-  private onUpdate: any;
-
-  constructor() {
-    this.onUpdate = () => {
-      this.update();
-      this.onRAF = window.requestAnimationFrame(this.onUpdate);
-    };
-    document.addEventListener('visibilitychange', () => {
-      this.playing = !document.hidden;
-    }, false);
-  }
+  const onUpdate = () => {
+    this.update();
+    onRAF = window.requestAnimationFrame(onUpdate);
+  };
+  document.addEventListener('visibilitychange', () => {
+    this.playing = !document.hidden;
+  }, false);
 
   /**
    * Add a RAF listener
    * @param name The name of the identifer
    * @param callback A function to be called every frame
    */
-  add(name: string, callback: () => void) {
-    if (!this.callbacks.has(name)) {
-      this.callbacks.set(name, callback);
+  this.add = function(name: string, callback: () => void) {
+    if (!callbacks.has(name)) {
+      callbacks.set(name, callback);
     }
   }
 
@@ -63,41 +59,41 @@ export class Raf {
    * Removes a RAF listener
    * @param callback A function to be called every frame
    */
-  remove(name: string) {
-    this.callbacks.delete(name);
+  this.remove = function(name: string) {
+    callbacks.delete(name);
   }
 
   /**
    * Plays the RAF singleton
    */
-  play() {
+  this.play = function() {
     if (this.playing) return;
     this.playing = true;
     this.clock.restart();
-    this.onUpdate();
+    onUpdate();
   }
 
   /**
    * Pauses the RAF singleton
    */
-  pause() {
+  this.pause = function() {
     if (!this.playing) return;
     this.playing = false;
-    window.cancelAnimationFrame(this.onRAF);
-    this.onRAF = undefined;
+    window.cancelAnimationFrame(onRAF);
+    onRAF = undefined;
   }
 
   /**
    * Calls all callback functions
    */
-   update() {
-     for (let callback of this.callbacks.values()) {
+  this.update = function() {
+     for (let callback of callbacks.values()) {
        callback();
      }
   }
+
+  return this;
 }
 
-/**
- * The singleton RAF instance
- */
-export default new Raf();
+const raf = RafUtil();
+export default raf;

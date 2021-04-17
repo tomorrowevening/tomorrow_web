@@ -11,73 +11,71 @@ var __values = (this && this.__values) || function(o) {
     throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Raf = void 0;
-var Raf = (function () {
-    function Raf() {
-        var _this = this;
-        this.playing = false;
-        this.clock = {
-            elapsed: 0,
-            delta: 0,
-            start: 0,
-            last: 0,
-            now: function () {
-                return performance.now();
-            },
-            seconds: function () {
-                return _this.clock.elapsed / 1000;
-            },
-            restart: function () {
-                _this.clock.delta = 0;
-                _this.clock.elapsed = 0;
-                var now = _this.clock.now();
-                _this.clock.start = now;
-                _this.clock.last = now;
-            },
-            update: function () {
-                var now = _this.clock.now();
-                _this.clock.delta = now - _this.clock.last;
-                if (_this.clock.delta > 1000)
-                    _this.clock.delta = 0;
-                _this.clock.elapsed += _this.clock.delta;
-                _this.clock.last = now;
-            }
-        };
-        this.callbacks = new Map();
-        this.onUpdate = function () {
-            _this.update();
-            _this.onRAF = window.requestAnimationFrame(_this.onUpdate);
-        };
-        document.addEventListener('visibilitychange', function () {
-            _this.playing = !document.hidden;
-        }, false);
-    }
-    Raf.prototype.add = function (name, callback) {
-        if (!this.callbacks.has(name)) {
-            this.callbacks.set(name, callback);
+function RafUtil() {
+    var _this = this;
+    this.playing = false;
+    this.clock = {
+        elapsed: 0,
+        delta: 0,
+        start: 0,
+        last: 0,
+        now: function () {
+            return performance.now();
+        },
+        seconds: function () {
+            return this.elapsed / 1000;
+        },
+        restart: function () {
+            this.delta = 0;
+            this.elapsed = 0;
+            var now = this.clock.now();
+            this.start = now;
+            this.last = now;
+        },
+        update: function () {
+            var now = this.now();
+            this.delta = now - this.last;
+            if (this.delta > 1000)
+                this.delta = 0;
+            this.elapsed += this.delta;
+            this.last = now;
         }
     };
-    Raf.prototype.remove = function (name) {
-        this.callbacks.delete(name);
+    var callbacks = new Map();
+    var onRAF;
+    var onUpdate = function () {
+        _this.update();
+        onRAF = window.requestAnimationFrame(onUpdate);
     };
-    Raf.prototype.play = function () {
+    document.addEventListener('visibilitychange', function () {
+        _this.playing = !document.hidden;
+    }, false);
+    this.add = function (name, callback) {
+        if (!callbacks.has(name)) {
+            callbacks.set(name, callback);
+        }
+    };
+    this.remove = function (name) {
+        callbacks.delete(name);
+    };
+    this.play = function () {
         if (this.playing)
             return;
         this.playing = true;
         this.clock.restart();
-        this.onUpdate();
+        onUpdate();
     };
-    Raf.prototype.pause = function () {
+    this.pause = function () {
         if (!this.playing)
             return;
         this.playing = false;
-        window.cancelAnimationFrame(this.onRAF);
-        this.onRAF = undefined;
+        window.cancelAnimationFrame(onRAF);
+        onRAF = undefined;
     };
-    Raf.prototype.update = function () {
+    this.update = function () {
         var e_1, _a;
         try {
-            for (var _b = __values(this.callbacks.values()), _c = _b.next(); !_c.done; _c = _b.next()) {
+            for (var _b = __values(callbacks.values()), _c = _b.next(); !_c.done; _c = _b.next()) {
                 var callback = _c.value;
                 callback();
             }
@@ -90,8 +88,8 @@ var Raf = (function () {
             finally { if (e_1) throw e_1.error; }
         }
     };
-    return Raf;
-}());
-exports.Raf = Raf;
-exports.default = new Raf();
+    return this;
+}
+var raf = RafUtil();
+exports.default = raf;
 //# sourceMappingURL=raf.js.map

@@ -1,15 +1,23 @@
 {
-  "compilerOptions": {
-    "noImplicitAny": false,
-    "noEmitOnError": true,
-    "removeComments": true,
-    "sourceMap": true,
-    "target": "es5",
-    "outDir": "dist",
+  "compilerOptions": { 
+    "declaration": true,
+    "declarationDir": "./declarations",
     "downlevelIteration": true,
-    "declaration": true
+    "outDir": "./dist",
+    "removeComments": true,
+    "moduleResolution": "node",
+    "target": "es5",
+    "allowSyntheticDefaultImports": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "forceConsistentCasingInFileNames": true,
+    "sourceMap": true
   },
   "include": [
-    "src/index.ts"
+    "src/**/*"
+  ],
+  "exclude": [
+    "dist",
+    "declarations",
+    "node_modules"
   ]
 }
