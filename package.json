@@ -1,11 +1,11 @@
 {
   "name": "tomorrow_web",
-  "version": "0.0.962",
+  "version": "0.0.963",
   "description": "Web Utilities",
   "main": "dist",
-  "types": "declarations",
+  "types": "dist",
   "scripts": {
-    "clean": "rm -rf dist && rm -rf declarations",
+    "clean": "rm -rf dist",
     "build": "npm run clean && tsc --build"
   },
   "repository": {
@@ -33,7 +33,6 @@
   },
   "files": [
     "dist",
-    "declarations",
     "LICENSE",
     "README.md"
   ]
