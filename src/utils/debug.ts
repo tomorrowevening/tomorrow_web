@@ -4,34 +4,39 @@ import * as dat from 'dat.gui';
 /**
  * Single Debugging object to house dat.gui & stats
  */
-function DebugUtil() {
-  this.enabled = document.location.href.search('debug') > -1;
+class Debugger {
+  enabled: boolean = document.location.href.search('debug') > -1;
 
-  let stats: any;
-  const folders: Object = {};
+  gui: dat.GUI;
 
-  if (this.enabled) {
+  private stats: any;
+
+  private folders: Object = {};
+
+  constructor() {
+    if (!this.enabled) return;
+
+    this.stats = new Stats();
+    document.body.appendChild(this.stats.dom);
+
     this.gui = new dat.GUI();
     this.gui.domElement.parentElement.style.zIndex = '10000';
-
-    stats = new Stats();
-    document.body.appendChild(stats.dom);
   }
 
   /**
    * To be called before updating/rendering
    */
-  this.begin = function () {
+  begin() {
     if (!this.enabled) return;
-    stats.begin();
+    this.stats.begin();
   }
 
   /**
    * To be called after updating/rendering
    */
-  this.end = function () {
+  end() {
     if (!this.enabled) return;
-    stats.end();
+    this.stats.end();
   }
 
   /**
@@ -39,10 +44,10 @@ function DebugUtil() {
    * @param name The name of the founder
    * @param expanded If the folder should be expanded or not
    */
-  this.folder = function(name: string, expanded: boolean = false) {
+  folder(name: string, expanded: boolean = false) {
     // If a folder with the same name already exists, return that folder
-    if (folders[name]) {
-      return folders[name];
+    if (this.folders[name]) {
+      return this.folders[name];
     }
 
     const folder = this.gui.addFolder(name);
@@ -52,8 +57,8 @@ function DebugUtil() {
       folder.open();
     }
 
-    folders[name] = folder;
-    return folders[name];
+    this.folders[name] = folder;
+    return this.folders[name];
   }
 
   /**
@@ -63,11 +68,7 @@ function DebugUtil() {
    * @param callback The callback function
    * @returns The created GUI
    */
-  this.addButton = function(
-    folder: dat.gui.GUI | undefined,
-    label: string,
-    callback: () => void
-  ): dat.gui.GUI {
+  addButton(folder: dat.gui.GUI | undefined, label: string, callback: () => void): dat.gui.GUI {
     const props = { click: callback };
     const usedGUI = folder !== undefined ? folder : this.gui;
     return usedGUI.add(props, 'click').name(label);
@@ -81,7 +82,7 @@ function DebugUtil() {
    * @param callback The callback function
    * @returns The created GUI
    */
-  this.addOptions = function(
+  addOptions(
     folder: dat.gui.GUI | undefined,
     label: string,
     options: Array<any>,
@@ -105,7 +106,7 @@ function DebugUtil() {
    * @param props Optional predefined options
    * @returns The created GUI
    */
-  this.addInput = function(
+  addInput(
     folder: dat.gui.GUI | undefined,
     obj: any,
     value: string,
@@ -139,9 +140,7 @@ function DebugUtil() {
 
     return added;
   }
-
-  return this;
 }
 
-const debug = DebugUtil();
+const debug = new Debugger();
 export default debug;

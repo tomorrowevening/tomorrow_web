@@ -5,11 +5,15 @@ import {
 	fileName
 } from './dom';
 
-function LoaderUtil() {
-	try {
-		this.supportsBlob = !!new Blob();
-	} catch (e) {
-		this.supportsBlob = false;
+class Loader {
+	supportsBlob = false;
+
+	constructor() {
+		try {
+			this.supportsBlob = !!new Blob();
+		} catch (e) {
+			this.supportsBlob = false;
+		}
 	}
 
 	/**
@@ -18,7 +22,7 @@ function LoaderUtil() {
 	 * @param responseType The type of the request
 	 * @param onProgress A callback function with the loaded progress
 	 */
-	this.loadXHR = function(
+	async loadXHR(
 		path: string,
 		responseType: XMLHttpRequestResponseType,
 		onProgress: (progress: number) => void
@@ -39,14 +43,14 @@ function LoaderUtil() {
 			}, false);
 			request.send();
 		});
-	};
+	}
 
 	/**
 	 * Loads an XHR Image
 	 * @param path The URL of the image
 	 * @param onProgress A callback function with the loaded progress
 	 */
-	this.loadImageBlob = function(
+	async loadImageBlob(
 		path: string,
 		onProgress: (progress: number) => void
 	): Promise < HTMLImageElement > {
@@ -56,6 +60,7 @@ function LoaderUtil() {
 					const image = new Image();
 					window.URL.revokeObjectURL(request.response);
 					image.src = window.URL.createObjectURL(request.response);
+
 					resolve(image);
 				})
 				.catch(reject);
@@ -67,7 +72,7 @@ function LoaderUtil() {
 	 * @param path The URL of the image
 	 * @returns A Promise with the image as a param
 	 */
-	this.loadImageElement = function(
+	async loadImageElement(
 		path: string
 	): Promise < HTMLImageElement > {
 		return new Promise < HTMLImageElement > ((resolve, reject) => {
@@ -88,7 +93,7 @@ function LoaderUtil() {
 	 * @param images An array of images to load
 	 * @param onProgress A callback function with the loaded progress
 	 */
-	this.loadImages = function(
+	async loadImages(
 		baseURL: string,
 		images: Array < string > ,
 		onProgress: (progress: number) => void
@@ -140,7 +145,7 @@ function LoaderUtil() {
 	 * @param path The URL of the JSON
 	 * @param onProgress A callback function with the loaded progress
 	 */
-	this.loadJSON = function(
+	async loadJSON(
 		path: string,
 		onProgress: (progress: number) => void
 	): Promise < any > {
@@ -162,7 +167,7 @@ function LoaderUtil() {
 	 * @param path The URL of the audio
 	 * @returns A Promise with the audio as a param
 	 */
-	this.loadAudioElement = function(
+	async loadAudioElement(
 		path: string
 	): Promise < HTMLAudioElement > {
 		return new Promise < HTMLAudioElement > ((resolve, reject) => {
@@ -184,7 +189,7 @@ function LoaderUtil() {
 	 * @param path The URL of the video
 	 * @returns A Promise with the video as a param
 	 */
-	this.loadVideoElement = function(
+	async loadVideoElement(
 		path: string
 	): Promise < HTMLVideoElement > {
 		return new Promise < HTMLVideoElement > ((resolve, reject) => {
@@ -207,7 +212,7 @@ function LoaderUtil() {
 	 * @param onProgress A callback function with the loaded progress
 	 * @returns An object of the loaded files { audio, custom, images, json, videos }
 	 */
-	this.loadAssets = function(
+	async loadAssets(
 		items: Array < any > ,
 		onProgress: (progress: number) => void
 	): Promise < any > {
@@ -315,9 +320,7 @@ function LoaderUtil() {
 			});
 		});
 	}
-
-	return this;
 }
 
-const loader = LoaderUtil();
+const loader = new Loader();
 export default loader;
