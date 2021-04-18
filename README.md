@@ -2,7 +2,7 @@
 
 ### Debug
 ```
-import debug from 'tomorrow_web/debug';
+import debug from 'tomorrow_web/utils/debug';
 const params = {
     seconds: 0,
     options: ['A', 'B', 'C'],
@@ -36,7 +36,7 @@ import {
     delay,
     fileName,
     guid
-} from 'tomorrow_web/dom';
+} from 'tomorrow_web/utils/dom';
 console.log(
     'test browser support:\n',
     `isiPad: ${isiPad}\n`,
@@ -59,7 +59,7 @@ console.log(
 
 ### Loader
 ```
-import loader from 'tomorrow_web/loader';
+import loader from 'tomorrow_web/utils/loader';
 import {
     GLTF,
     GLTFLoader
@@ -131,7 +131,7 @@ import {
     toDeg,
     cubicBezier,
     mixArrays
-} from 'tomorrow_web/math';
+} from 'tomorrow_web/utils/math';
 console.log(
     'test math:\n',
     `DEGREES: ${DEGREES}\n`,
@@ -158,8 +158,8 @@ console.log(
 
 ### RAF
 ```
-import debug from 'tomorrow_web/debug';
-import raf from 'tomorrow_web/raf';
+import debug from 'tomorrow_web/utils/debug';
+import raf from 'tomorrow_web/utils/raf';
 raf.add(() => {
     debug.begin();
     // Update animation / render calls
@@ -172,7 +172,7 @@ raf.play();
 ```
 import {
     parseShader
-} from 'tomorrow_web/three';
+} from 'tomorrow_web/utils/three';
 import { ShaderLib } from 'three/renderers/shaders/ShaderLib';
 
 const fragment = parseShader(
