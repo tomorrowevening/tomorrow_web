@@ -2,30 +2,31 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var Stats = require("stats-js");
 var dat = require("dat.gui");
-function DebugUtil() {
-    this.enabled = document.location.href.search('debug') > -1;
-    var stats;
-    var folders = {};
-    if (this.enabled) {
+var Debugger = (function () {
+    function Debugger() {
+        this.enabled = document.location.href.search('debug') > -1;
+        this.folders = {};
+        if (!this.enabled)
+            return;
+        this.stats = new Stats();
+        document.body.appendChild(this.stats.dom);
         this.gui = new dat.GUI();
         this.gui.domElement.parentElement.style.zIndex = '10000';
-        stats = new Stats();
-        document.body.appendChild(stats.dom);
     }
-    this.begin = function () {
+    Debugger.prototype.begin = function () {
         if (!this.enabled)
             return;
-        stats.begin();
+        this.stats.begin();
     };
-    this.end = function () {
+    Debugger.prototype.end = function () {
         if (!this.enabled)
             return;
-        stats.end();
+        this.stats.end();
     };
-    this.folder = function (name, expanded) {
+    Debugger.prototype.folder = function (name, expanded) {
         if (expanded === void 0) { expanded = false; }
-        if (folders[name]) {
-            return folders[name];
+        if (this.folders[name]) {
+            return this.folders[name];
         }
         var folder = this.gui.addFolder(name);
         if (!expanded) {
@@ -34,15 +35,15 @@ function DebugUtil() {
         else {
             folder.open();
         }
-        folders[name] = folder;
-        return folders[name];
+        this.folders[name] = folder;
+        return this.folders[name];
     };
-    this.addButton = function (folder, label, callback) {
+    Debugger.prototype.addButton = function (folder, label, callback) {
         var props = { click: callback };
         var usedGUI = folder !== undefined ? folder : this.gui;
         return usedGUI.add(props, 'click').name(label);
     };
-    this.addOptions = function (folder, label, options, callback) {
+    Debugger.prototype.addOptions = function (folder, label, options, callback) {
         var usedGUI = folder !== undefined ? folder : this.gui;
         var params = {
             value: options[0]
@@ -52,7 +53,7 @@ function DebugUtil() {
             callback(value, index);
         }).name(label);
     };
-    this.addInput = function (folder, obj, value, props) {
+    Debugger.prototype.addInput = function (folder, obj, value, props) {
         var usedGUI = folder !== undefined ? folder : this.gui;
         var added = usedGUI;
         if (props !== undefined) {
@@ -81,7 +82,7 @@ function DebugUtil() {
         }
         return added;
     };
-    return this;
-}
-var debug = DebugUtil();
+    return Debugger;
+}());
+var debug = new Debugger();
 exports.default = debug;
