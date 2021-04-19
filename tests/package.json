@@ -14,7 +14,11 @@
   ],
   "author": "Colin Duffy",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "dat.gui": "^0.7.7",
+    "stats-js": "^1.0.1",
+    "three": "^0.126.0"
+  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.33.0",
     "@typescript-eslint/parser": "^2.33.0",

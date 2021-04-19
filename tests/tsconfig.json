@@ -5,6 +5,7 @@
     "noImplicitAny": false,
     "module": "esnext",
     "target": "esnext",
+    "lib": [ "dom", "es2015" ],
     "strict": true,
     "jsx": "preserve",
     "importHelpers": true,
