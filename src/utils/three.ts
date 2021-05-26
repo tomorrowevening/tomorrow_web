@@ -4,6 +4,7 @@ import {
   ClampToEdgeWrapping,
   CustomBlending,
   DstColorFactor,
+  Float32BufferAttribute,
   FloatType,
   HalfFloatType,
   LinearFilter,
@@ -36,6 +37,24 @@ export const orthoCamera = new OrthographicCamera(-0.5, 0.5, 0.5, -0.5, 0, 1);
 export const plane = new PlaneBufferGeometry(1, 1);
 
 /**
+ * Cheaper Geometry for shader rendering
+ */
+export const triangle = new BufferGeometry();
+triangle.setAttribute('position', new Float32BufferAttribute([
+  -0.5, -0.5, 0,
+  1.5, -0.5, 0,
+  -0.5, 1.5, 0
+], 3));
+triangle.setAttribute('normal', new Float32BufferAttribute([
+  0, 0, 1,
+  0, 0, 1
+], 3));
+triangle.setAttribute('uv', new Float32BufferAttribute([
+  0, 0, 2,
+  0, 0, 2
+], 2));
+
+/**
  * Disposes an item and it's children from memory
  * @param object The item to be removed
  */
@@ -51,6 +70,24 @@ export function dispose(object: Object3D | Mesh) {
     }
     object.material.dispose();
   }
+}
+
+/**
+ * Finds multiple objects with a common name
+ * @param object The base object, ideally a contained object, not a scene
+ * @param value The base name
+ */
+export function findObjectsWithName(object: Object3D, value: string): Array<Object3D> {
+  let children: Array<Object3D> = [];
+  object.children.forEach((child: Object3D) => {
+    const result = child.name.search(value);
+    if (result > -1) {
+      children.push(child);
+    } else {
+      children = children.concat(findObjectsWithName(child, value));
+    }
+  });
+  return children;
 }
 
 /**
