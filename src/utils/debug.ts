@@ -9,9 +9,9 @@ class Debugger {
 
   gui: dat.GUI;
 
-  private stats: any;
+  stats: any;
 
-  private folders: Object = {};
+  folders: Object = {};
 
   constructor() {
     if (!this.enabled) return;
@@ -139,6 +139,16 @@ class Debugger {
     }
 
     return added;
+  }
+
+  removeFolder(name: string) {
+    const folder = this.gui.__folders[name];
+    if (!folder) return;
+    folder.close();
+    this.gui.__ul.removeChild(folder.domElement.parentNode);
+    delete this.gui.__folders[name];
+    delete this.folders[name];
+    this.gui.onResize();
   }
 }
 

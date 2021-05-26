@@ -82,6 +82,16 @@ var Debugger = (function () {
         }
         return added;
     };
+    Debugger.prototype.removeFolder = function (name) {
+        var folder = this.gui.__folders[name];
+        if (!folder)
+            return;
+        folder.close();
+        this.gui.__ul.removeChild(folder.domElement.parentNode);
+        delete this.gui.__folders[name];
+        delete this.folders[name];
+        this.gui.onResize();
+    };
     return Debugger;
 }());
 var debug = new Debugger();
