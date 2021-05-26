@@ -51,11 +51,25 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateTextureData = exports.Pass = exports.DoubleFBO = exports.FBO = exports.setBlendScreen = exports.setBlendMultiply = exports.setBlendAdd = exports.setBlendNormal = exports.anchorGeometryTL = exports.anchorGeometry = exports.parseShader = exports.dispose = exports.plane = exports.orthoCamera = void 0;
+exports.updateTextureData = exports.Pass = exports.DoubleFBO = exports.FBO = exports.setBlendScreen = exports.setBlendMultiply = exports.setBlendAdd = exports.setBlendNormal = exports.anchorGeometryTL = exports.anchorGeometry = exports.parseShader = exports.findObjectsWithName = exports.dispose = exports.triangle = exports.plane = exports.orthoCamera = void 0;
 var three_1 = require("three");
 var dom_1 = require("./dom");
 exports.orthoCamera = new three_1.OrthographicCamera(-0.5, 0.5, 0.5, -0.5, 0, 1);
 exports.plane = new three_1.PlaneBufferGeometry(1, 1);
+exports.triangle = new three_1.BufferGeometry();
+exports.triangle.setAttribute('position', new three_1.Float32BufferAttribute([
+    -0.5, -0.5, 0,
+    1.5, -0.5, 0,
+    -0.5, 1.5, 0
+], 3));
+exports.triangle.setAttribute('normal', new three_1.Float32BufferAttribute([
+    0, 0, 1,
+    0, 0, 1
+], 3));
+exports.triangle.setAttribute('uv', new three_1.Float32BufferAttribute([
+    0, 0, 2,
+    0, 0, 2
+], 2));
 function dispose(object) {
     while (object.children.length > 0) {
         dispose(object.children[0]);
@@ -72,6 +86,20 @@ function dispose(object) {
     }
 }
 exports.dispose = dispose;
+function findObjectsWithName(object, value) {
+    var children = [];
+    object.children.forEach(function (child) {
+        var result = child.name.search(value);
+        if (result > -1) {
+            children.push(child);
+        }
+        else {
+            children = children.concat(findObjectsWithName(child, value));
+        }
+    });
+    return children;
+}
+exports.findObjectsWithName = findObjectsWithName;
 function parseShader(shader, defines, options) {
     var output = shader;
     var definitions = "// defines\n" + defines.join('\n');

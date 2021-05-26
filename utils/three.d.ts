@@ -1,7 +1,9 @@
 import { BufferGeometry, Material, Mesh, Object3D, OrthographicCamera, Scene, Texture, WebGLRenderTarget } from 'three';
 export declare const orthoCamera: any;
 export declare const plane: any;
+export declare const triangle: any;
 export declare function dispose(object: Object3D | Mesh): void;
+export declare function findObjectsWithName(object: Object3D, value: string): Array<Object3D>;
 export declare function parseShader(shader: string, defines: Array<string>, options: Array<string>): string;
 export declare function anchorGeometry(geometry: BufferGeometry, x: number, y: number, z: number): void;
 export declare function anchorGeometryTL(geometry: BufferGeometry): void;
