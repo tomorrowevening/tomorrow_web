@@ -170,6 +170,7 @@ var Loader = (function () {
             return __generator(this, function (_a) {
                 return [2, new Promise(function (resolve, reject) {
                         var request = document.createElement('audio');
+                        request.setAttribute('crossOrigin', 'anonymous');
                         request.autoplay = false;
                         request.src = path;
                         request.addEventListener('error', function () {
@@ -188,6 +189,8 @@ var Loader = (function () {
             return __generator(this, function (_a) {
                 return [2, new Promise(function (resolve, reject) {
                         var request = document.createElement('video');
+                        request.setAttribute('crossOrigin', 'anonymous');
+                        request.playsInline = true;
                         request.autoplay = false;
                         request.src = path;
                         request.addEventListener('error', function () {

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.mixArrays = exports.cubicBezier = exports.toDeg = exports.toRad = exports.getAngle = exports.random = exports.distance3 = exports.distance2 = exports.distance = exports.roundTo = exports.map = exports.mix = exports.normalize = exports.clamp = exports.between = exports.HALF_PI = exports.TWO_PI = exports.RADIANS = exports.DEGREES = void 0;
+exports.mixArrays = exports.cubicBezier = exports.cosRange = exports.toDeg = exports.toRad = exports.getAngle = exports.random = exports.distance3 = exports.distance2 = exports.distance = exports.roundTo = exports.map = exports.mix = exports.normalize = exports.clamp = exports.between = exports.HALF_PI = exports.TWO_PI = exports.RADIANS = exports.DEGREES = void 0;
 exports.DEGREES = 180 / Math.PI;
 exports.RADIANS = Math.PI / 180;
 exports.TWO_PI = Math.PI * 2;
@@ -64,6 +64,10 @@ function toDeg(radians) {
     return radians * exports.DEGREES;
 }
 exports.toDeg = toDeg;
+function cosRange(degrees, range, min) {
+    return (((1 + Math.cos(toRad(degrees))) * 0.5) * range) + min;
+}
+exports.cosRange = cosRange;
 function isLinear(x0, y0, x1, y1) {
     return x0 === y0 && x1 === y1;
 }

@@ -1,7 +1,7 @@
 {
   "compilerOptions": { 
     "declaration": true,
-    "declarationDir": "./",
+    "declarationDir": "./types",
     "downlevelIteration": true,
     "outDir": "./",
     "rootDir": "./src",
