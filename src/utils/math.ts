@@ -142,6 +142,17 @@ export function toDeg(radians: number): number {
   return radians * DEGREES;
 }
 
+/**
+ * Animates using Cosine
+ * @param degrees The time variant
+ * @param range The range of animation
+ * @param min The minimum amount
+ * @returns 
+ */
+export function cosRange(degrees: number, range: number, min: number): number {
+  return(((1 + Math.cos(toRad(degrees))) * 0.5) * range) + min;
+}
+
 // Bezier
 
 function isLinear(x0: number, y0: number, x1: number, y1: number): boolean {
