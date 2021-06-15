@@ -172,6 +172,7 @@ class Loader {
 	): Promise < HTMLAudioElement > {
 		return new Promise < HTMLAudioElement > ((resolve, reject) => {
 			const request = document.createElement('audio') as HTMLAudioElement;
+			request.setAttribute('crossOrigin', 'anonymous');
 			request.autoplay = false;
 			request.src = path;
 			request.addEventListener('error', () => {
@@ -194,6 +195,8 @@ class Loader {
 	): Promise < HTMLVideoElement > {
 		return new Promise < HTMLVideoElement > ((resolve, reject) => {
 			const request = document.createElement('video') as HTMLVideoElement;
+			request.setAttribute('crossOrigin', 'anonymous');
+			request.playsInline = true;
 			request.autoplay = false;
 			request.src = path;
 			request.addEventListener('error', () => {
