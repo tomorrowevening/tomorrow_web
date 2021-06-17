@@ -153,6 +153,16 @@ export function cosRange(degrees: number, range: number, min: number): number {
   return(((1 + Math.cos(toRad(degrees))) * 0.5) * range) + min;
 }
 
+/**
+ * Checks the accuracy of precision
+ * @param current The current number
+ * @param destination The destination
+ * @param precision The level of detail, usually under 1
+ */
+export function precisionComplete(current: number, destination: number, precision: number): boolean {
+  return current < destination + precision && current > destination - precision;
+}
+
 // Bezier
 
 function isLinear(x0: number, y0: number, x1: number, y1: number): boolean {
