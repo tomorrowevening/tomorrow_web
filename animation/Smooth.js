@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SmoothController = exports.Smooth = void 0;
 var dom_1 = require("../utils/dom");
+var math_1 = require("../utils/math");
 var raf_1 = require("../utils/raf");
 var Smooth = (function () {
     function Smooth(obj, param, opts) {
@@ -35,9 +36,15 @@ var Smooth = (function () {
     Smooth.prototype.update = function () {
         var value = this.object[this.param];
         this.velocity = ((this.target - value) * this.speed) + (this.velocity * this.bounce);
-        this.object[this.param] = value + this.velocity;
+        var newValue = value + this.velocity;
+        this.object[this.param] = newValue;
         if (this.onUpdate !== undefined)
             this.onUpdate();
+        if (this.precision > 0) {
+            if (math_1.precisionComplete(newValue, this.target, this.precision)) {
+                this.complete();
+            }
+        }
     };
     Smooth.prototype.complete = function () {
         this.velocity = 0;

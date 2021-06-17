@@ -1,4 +1,5 @@
 import { guid } from '../utils/dom';
+import { precisionComplete } from '../utils/math';
 import raf from '../utils/raf';
 
 /**
@@ -66,8 +67,15 @@ export class Smooth {
     // Update velocity
     this.velocity = ((this.target - value) * this.speed) + (this.velocity * this.bounce);
     // Update value
-    this.object[this.param] = value + this.velocity;
+    const newValue = value + this.velocity;
+    this.object[this.param] = newValue;
     if (this.onUpdate !== undefined) this.onUpdate();
+    // Check precision
+    if (this.precision > 0) {
+      if (precisionComplete(newValue, this.target, this.precision)) {
+        this.complete();
+      }
+    }
   }
 
   /**
