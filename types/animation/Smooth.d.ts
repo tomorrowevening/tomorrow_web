@@ -3,6 +3,7 @@ interface SmoothProps {
     target?: number;
     speed?: number;
     bounce?: number;
+    precision?: number;
     onUpdate?: () => void;
 }
 export declare class Smooth {
