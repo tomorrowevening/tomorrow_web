@@ -19,6 +19,9 @@ var Smooth = (function () {
             if (opts.id !== undefined) {
                 this.id = opts.id;
             }
+            if (opts.precision !== undefined) {
+                this.precision = opts.precision;
+            }
             if (opts.speed !== undefined) {
                 this.speed = opts.speed;
             }

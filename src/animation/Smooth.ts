@@ -10,6 +10,7 @@ interface SmoothProps {
   target?: number;
   speed?: number;
   bounce?: number;
+  precision?: number;
   onUpdate?: () => void;
 }
 
@@ -43,6 +44,9 @@ export class Smooth {
     if (opts !== undefined) {
       if (opts.id !== undefined) {
         this.id = opts.id;
+      }
+      if (opts.precision !== undefined) {
+        this.precision = opts.precision;
       }
       if (opts.speed !== undefined) {
         this.speed = opts.speed;
