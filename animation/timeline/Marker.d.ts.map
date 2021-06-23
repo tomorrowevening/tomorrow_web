@@ -1,1 +1,0 @@
-{"version":3,"file":"Marker.d.ts","sourceRoot":"","sources":["../../src/animation/timeline/Marker.ts"],"names":[],"mappings":"AAKC,MAAM,CAAC,OAAO,OAAO,MAAM;IAC1B,IAAI,EAAE,MAAM,CAAM;IAElB,IAAI,EAAE,MAAM,CAAK;IAEjB,QAAQ,CAAC,EAAE,MAAM,IAAI,CAAC;gBAEV,IAAI,GAAE,MAAW,EAAE,IAAI,GAAE,MAAU;CAIhD"}

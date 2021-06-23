@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Debugger = void 0;
 var Stats = require("stats-js");
 var dat = require("dat.gui");
 var Debugger = (function () {
@@ -94,5 +95,6 @@ var Debugger = (function () {
     };
     return Debugger;
 }());
+exports.Debugger = Debugger;
 var debug = new Debugger();
 exports.default = debug;

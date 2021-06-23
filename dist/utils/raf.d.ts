@@ -1,4 +1,4 @@
-declare class Raf {
+export declare class Raf {
     playing: boolean;
     clock: {
         elapsed: number;

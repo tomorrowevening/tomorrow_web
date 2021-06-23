@@ -36,6 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Loader = void 0;
 var dom_1 = require("./dom");
 var Loader = (function () {
     function Loader() {
@@ -302,5 +303,6 @@ var Loader = (function () {
     };
     return Loader;
 }());
+exports.Loader = Loader;
 var loader = new Loader();
 exports.default = loader;

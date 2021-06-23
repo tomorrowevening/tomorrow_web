@@ -11,6 +11,7 @@ var __values = (this && this.__values) || function(o) {
     throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Raf = void 0;
 var Raf = (function () {
     function Raf() {
         var _this = this;
@@ -91,5 +92,6 @@ var Raf = (function () {
     };
     return Raf;
 }());
+exports.Raf = Raf;
 var raf = new Raf();
 exports.default = raf;

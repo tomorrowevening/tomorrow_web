@@ -4,7 +4,7 @@ import * as dat from 'dat.gui';
 /**
  * Single Debugging object to house dat.gui & stats
  */
-class Debugger {
+export class Debugger {
   enabled: boolean = document.location.href.search('debug') > -1;
 
   gui: dat.GUI;

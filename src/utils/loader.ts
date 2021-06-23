@@ -5,7 +5,7 @@ import {
 	fileName
 } from './dom';
 
-class Loader {
+export class Loader {
 	supportsBlob = false;
 
 	constructor() {

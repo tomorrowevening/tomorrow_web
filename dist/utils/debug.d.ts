@@ -1,5 +1,5 @@
 import * as dat from 'dat.gui';
-declare class Debugger {
+export declare class Debugger {
     enabled: boolean;
     gui: dat.GUI;
     stats: any;

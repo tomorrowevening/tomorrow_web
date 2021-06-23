@@ -1,4 +1,4 @@
-declare class Loader {
+export declare class Loader {
     supportsBlob: boolean;
     constructor();
     loadXHR(path: string, responseType: XMLHttpRequestResponseType, onProgress: (progress: number) => void): Promise<XMLHttpRequest>;

@@ -2,7 +2,7 @@
  * A singleton object that utilizes requestAnimationFrame and pauses/plays based
  * on the browser's 'visibilitychange' events, and also keeps time.
  */
-class Raf {
+export class Raf {
   playing: boolean = false;
 
 	clock = {
