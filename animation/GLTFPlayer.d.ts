@@ -30,3 +30,4 @@ export default class GLTFPlayer {
     set percent(value: number);
     set time(value: number);
 }
+//# sourceMappingURL=GLTFPlayer.d.ts.map

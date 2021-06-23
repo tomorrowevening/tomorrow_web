@@ -12,3 +12,4 @@ declare class Loader {
 }
 declare const loader: Loader;
 export default loader;
+//# sourceMappingURL=loader.d.ts.map

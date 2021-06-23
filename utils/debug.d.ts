@@ -15,3 +15,4 @@ declare class Debugger {
 }
 declare const debug: Debugger;
 export default debug;
+//# sourceMappingURL=debug.d.ts.map

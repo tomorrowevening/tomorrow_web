@@ -4,3 +4,4 @@ export default class Marker {
     callback?: () => void;
     constructor(name?: string, time?: number);
 }
+//# sourceMappingURL=Marker.d.ts.map

@@ -30,3 +30,4 @@ export declare class SmoothController {
 }
 declare const smoothing: SmoothController;
 export default smoothing;
+//# sourceMappingURL=Smooth.d.ts.map

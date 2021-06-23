@@ -16,3 +16,4 @@ export default class Keyframe {
     get startTime(): number;
     get endTime(): number;
 }
+//# sourceMappingURL=Keyframe.d.ts.map

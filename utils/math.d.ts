@@ -19,3 +19,4 @@ export declare function cosRange(degrees: number, range: number, min: number): n
 export declare function precisionComplete(current: number, destination: number, precision: number): boolean;
 export declare function cubicBezier(percent: number, x0: number, y0: number, x1: number, y1: number): number;
 export declare function mixArrays(start: Array<number>, end: Array<number>, value: number): Array<number>;
+//# sourceMappingURL=math.d.ts.map

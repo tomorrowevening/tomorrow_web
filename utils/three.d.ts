@@ -34,3 +34,4 @@ export declare class Pass {
     draw(): void;
 }
 export declare function updateTextureData(svgElement: SVGElement, imgWid: number, imgHei: number): Promise<Texture>;
+//# sourceMappingURL=three.d.ts.map

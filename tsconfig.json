@@ -1,8 +1,9 @@
 {
   "compilerOptions": { 
     "declaration": true,
-    "declarationDir": "./types",
+    "declarationMap": true,
     "downlevelIteration": true,
+    "explainFiles": true,
     "outDir": "./",
     "rootDir": "./src",
     "removeComments": true,

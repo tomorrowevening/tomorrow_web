@@ -1,9 +1,8 @@
 {
   "name": "tomorrow_web",
-  "version": "0.0.974",
+  "version": "0.0.975",
   "description": "Web Utilities",
   "main": "index.js",
-  "types": "types/",
   "scripts": {
     "clean": "rm -rf animation utils types",
     "build": "tsc --build"
@@ -33,8 +32,19 @@
     "typescript": "^4.1.3"
   },
   "files": [
-    "animation/",
-    "utils/",
+    "animation/timeline/Ease.js",
+    "animation/timeline/Keyframe.js",
+    "animation/timeline/Marker.js",
+    "animation/timeline/PlayMode.js",
+    "animation/timeline/Timeline.js",
+    "animation/GLTFPlayer.js",
+    "animation/Smooth.js",
+    "utils/debug.js",
+    "utils/dom.js",
+    "utils/loader.js",
+    "utils/math.js",
+    "utils/raf.js",
+    "utils/three.js",
     "LICENSE",
     "README.md"
   ]

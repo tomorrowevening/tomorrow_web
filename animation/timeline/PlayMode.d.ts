@@ -4,3 +4,4 @@ declare enum PlayMode {
     PingPong = "PingPong"
 }
 export default PlayMode;
+//# sourceMappingURL=PlayMode.d.ts.map

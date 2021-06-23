@@ -31,3 +31,4 @@ export default class Timeline {
     get seconds(): number;
     set seconds(value: number);
 }
+//# sourceMappingURL=Timeline.d.ts.map

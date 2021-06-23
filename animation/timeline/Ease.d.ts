@@ -29,3 +29,4 @@ declare const _default: {
     inOutBack: number[];
 };
 export default _default;
+//# sourceMappingURL=Ease.d.ts.map

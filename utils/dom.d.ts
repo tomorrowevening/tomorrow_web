@@ -11,3 +11,4 @@ export declare const supportsWebp: boolean;
 export declare function delay(seconds: number): Promise<void>;
 export declare function fileName(path: string): string;
 export declare function guid(): string;
+//# sourceMappingURL=dom.d.ts.map
