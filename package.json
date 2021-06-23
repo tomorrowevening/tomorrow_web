@@ -1,6 +1,6 @@
 {
   "name": "tomorrow_web",
-  "version": "0.0.978",
+  "version": "0.0.979",
   "description": "Web Utilities",
   "main": "index.js",
   "scripts": {
@@ -24,6 +24,8 @@
   },
   "homepage": "https://github.com/tomorrowevening/tomorrow_web#readme",
   "peerDependencies": {
+    "dat.gui": "*",
+    "stats-js": "*",
     "three": "*"
   },
   "dependencies": {},
