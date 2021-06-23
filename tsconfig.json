@@ -3,7 +3,7 @@
     "declaration": true,
     "declarationMap": true,
     "downlevelIteration": true,
-    "outDir": "./dist",
+    "outDir": "./",
     "rootDir": "./src",
     "removeComments": true,
     "moduleResolution": "node",
