@@ -75,6 +75,35 @@ export class Debugger {
   }
 
   /**
+   * A color to debug
+   * @param folder An optional folder
+   * @param obj The object with the value
+   * @param value The value you want to modify/listen to
+   * @param props Optional predefined options
+   * @returns The created GUI
+   */
+   addColor(
+    folder: dat.gui.GUI | undefined,
+    obj: any,
+    value: string,
+    props?: any
+  ): dat.gui.GUI {
+    const usedGUI = folder !== undefined ? folder : this.gui;
+    let added: dat.gui.GUI = usedGUI.addColor(obj, value);
+
+    if (props !== undefined) {
+      if (props.label !== undefined) added.name(props.label);
+      if (props.onChange !== undefined) {
+        added.onChange(() => {
+          props.onChange();
+        });
+      }
+    }
+
+    return added;
+  }
+
+  /**
    * A list of items
    * @param folder An optional folder
    * @param label The option's label

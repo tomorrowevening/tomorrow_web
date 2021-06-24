@@ -44,6 +44,20 @@ var Debugger = (function () {
         var usedGUI = folder !== undefined ? folder : this.gui;
         return usedGUI.add(props, 'click').name(label);
     };
+    Debugger.prototype.addColor = function (folder, obj, value, props) {
+        var usedGUI = folder !== undefined ? folder : this.gui;
+        var added = usedGUI.addColor(obj, value);
+        if (props !== undefined) {
+            if (props.label !== undefined)
+                added.name(props.label);
+            if (props.onChange !== undefined) {
+                added.onChange(function () {
+                    props.onChange();
+                });
+            }
+        }
+        return added;
+    };
     Debugger.prototype.addOptions = function (folder, label, options, callback) {
         var usedGUI = folder !== undefined ? folder : this.gui;
         var params = {
