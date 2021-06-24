@@ -82,6 +82,9 @@ var Debugger = (function () {
                     added = usedGUI.add(obj, value, props.min, props.max);
                 }
             }
+            else {
+                added = usedGUI.add(obj, value);
+            }
         }
         else {
             added = usedGUI.add(obj, value);
