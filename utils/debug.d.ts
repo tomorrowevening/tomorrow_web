@@ -4,7 +4,7 @@ export declare class Debugger {
     gui: dat.GUI;
     stats: any;
     folders: Object;
-    constructor();
+    init(): void;
     begin(): void;
     end(): void;
     folder(name: string, expanded?: boolean): any;

@@ -13,7 +13,7 @@ export class Debugger {
 
   folders: Object = {};
 
-  constructor() {
+  init() {
     if (!this.enabled) return;
 
     this.stats = new Stats();

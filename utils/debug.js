@@ -7,13 +7,15 @@ var Debugger = (function () {
     function Debugger() {
         this.enabled = document.location.href.search('debug') > -1;
         this.folders = {};
+    }
+    Debugger.prototype.init = function () {
         if (!this.enabled)
             return;
         this.stats = new Stats();
         document.body.appendChild(this.stats.dom);
         this.gui = new dat.GUI();
         this.gui.domElement.parentElement.style.zIndex = '10000';
-    }
+    };
     Debugger.prototype.begin = function () {
         if (!this.enabled)
             return;
