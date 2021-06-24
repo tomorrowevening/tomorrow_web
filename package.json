@@ -1,6 +1,6 @@
 {
   "name": "tomorrow_web",
-  "version": "0.0.980",
+  "version": "0.0.981",
   "description": "Web Utilities",
   "main": "index.js",
   "scripts": {
