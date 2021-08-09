@@ -17,6 +17,7 @@ import {
   OneMinusDstColorFactor,
   OneMinusSrcAlphaFactor,
   OrthographicCamera,
+  PerspectiveCamera,
   PlaneBufferGeometry,
   RGBAFormat,
   Scene,
@@ -63,13 +64,61 @@ export function dispose(object: Object3D | Mesh) {
     dispose(object.children[0]);
   }
   if (object.parent) object.parent.remove(object);
-  if (object.geometry) object.geometry.dispose();
-  if (object.material) {
-    if (object.material.map) {
-      object.material.map.dispose();
+  if (object instanceof Mesh) {
+    // @ts-ignore
+    if (object.geometry) object.geometry.dispose();
+    // @ts-ignore
+    if (object.material) {
+      // @ts-ignore
+      if (object.material.map) {
+        // @ts-ignore
+        object.material.map.dispose();
+      }
+      // @ts-ignore
+      object.material.dispose();
     }
-    object.material.dispose();
   }
+}
+
+/**
+ * Updates a Perspective camera's FOV to fit pixel-perfect
+ * @param {THREE.PerspectiveCamera} camera
+ * @param {Number} width Screen width
+ * @param {Number} height Screen height
+ * @param {Number} aspect Screen aspect ratio
+ */
+ export function updateCameraPerspective(
+  camera: PerspectiveCamera,
+  width: number,
+  height: number
+) {
+  const aspect = width / height;
+  const dist = Math.abs(camera.position.z);
+	const fov = 2 * Math.atan(width / aspect / (2 * dist)) * (180 / Math.PI);
+	camera.fov = fov;
+	camera.aspect = aspect;
+	camera.updateProjectionMatrix();
+}
+
+/**
+ * Updates an Orthographic camera's view to fit pixel-perfect in view
+ * @param {THREE.OrthographicCamera} camera
+ * @param {Number} width Screen width
+ * @param {Number} height Screen height
+ * @param {Number} aspect Screen aspect ratio
+ */
+export function updateCameraOrtho(
+  camera: OrthographicCamera,
+  width: number,
+  height: number
+) {
+	camera.left = width / -2;
+	camera.right = width / 2;
+	camera.top = height / 2;
+	camera.bottom = height / -2;
+	camera.position.x = width / 2;
+	camera.position.y = height / -2;
+	camera.updateProjectionMatrix();
 }
 
 /**
