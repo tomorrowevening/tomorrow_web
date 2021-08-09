@@ -1,4 +1,5 @@
 import { AnimationClip, AnimationMixer, Camera, Group } from 'three';
+import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
 export default class GLTFPlayer {
     actions: Object;
     cameras: Array<Camera>;
@@ -18,11 +19,11 @@ export default class GLTFPlayer {
     pause(): void;
     togglePause(): void;
     loopOnce(): void;
-    loopRepeat(): void;
+    loopRepeat(repetitions?: number): void;
     getAction(animation: String): any;
     getAnimation(animation: String): AnimationClip;
     resizeCameras(aspect: number): void;
-    static loadGLTF(path: string, onProgress?: (percent: number) => void): Promise<any>;
+    static loadGLTF(path: string, onProgress?: (percent: number) => void): Promise<GLTF>;
     get duration(): number;
     get time(): number;
     get percent(): number;

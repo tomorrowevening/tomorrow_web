@@ -80,12 +80,13 @@ var GLTFPlayer = (function () {
     };
     GLTFPlayer.prototype.loopOnce = function () {
         if (this.currentAnimation.length > 0) {
-            this.currentAction.setLoop(three_1.LoopOnce);
+            this.currentAction.setLoop(three_1.LoopOnce, 0);
         }
     };
-    GLTFPlayer.prototype.loopRepeat = function () {
+    GLTFPlayer.prototype.loopRepeat = function (repetitions) {
+        if (repetitions === void 0) { repetitions = Infinity; }
         if (this.currentAnimation.length > 0) {
-            this.currentAction.setLoop(three_1.LoopRepeat);
+            this.currentAction.setLoop(three_1.LoopRepeat, repetitions);
         }
     };
     GLTFPlayer.prototype.getAction = function (animation) {

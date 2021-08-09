@@ -1,8 +1,10 @@
-import { BufferGeometry, Material, Mesh, Object3D, OrthographicCamera, Scene, Texture, WebGLRenderTarget } from 'three';
-export declare const orthoCamera: any;
-export declare const plane: any;
-export declare const triangle: any;
+import { BufferGeometry, Material, Mesh, Object3D, OrthographicCamera, PerspectiveCamera, PlaneBufferGeometry, Scene, Texture, WebGLRenderTarget } from 'three';
+export declare const orthoCamera: OrthographicCamera;
+export declare const plane: PlaneBufferGeometry;
+export declare const triangle: BufferGeometry;
 export declare function dispose(object: Object3D | Mesh): void;
+export declare function updateCameraPerspective(camera: PerspectiveCamera, width: number, height: number): void;
+export declare function updateCameraOrtho(camera: OrthographicCamera, width: number, height: number): void;
 export declare function findObjectsWithName(object: Object3D, value: string): Array<Object3D>;
 export declare function parseShader(shader: string, defines: Array<string>, options: Array<string>): string;
 export declare function anchorGeometry(geometry: BufferGeometry, x: number, y: number, z: number): void;

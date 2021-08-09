@@ -1,20 +1,26 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Debugger = void 0;
-var Stats = require("stats-js");
-var dat = require("dat.gui");
+var tweakpane_1 = require("tweakpane");
+var EssentialsPlugin = require("@tweakpane/plugin-essentials");
 var Debugger = (function () {
     function Debugger() {
         this.enabled = document.location.href.search('debug') > -1;
         this.folders = {};
     }
     Debugger.prototype.init = function () {
+        var _this = this;
         if (!this.enabled)
             return;
-        this.stats = new Stats();
-        document.body.appendChild(this.stats.dom);
-        this.gui = new dat.GUI();
-        this.gui.domElement.parentElement.style.zIndex = '10000';
+        this.gui = new tweakpane_1.Pane();
+        this.gui.element.style.zIndex = '10000';
+        this.gui.registerPlugin(EssentialsPlugin);
+        this.stats = this.gui.addBlade({
+            view: 'fpsgraph'
+        });
+        this.addButton(undefined, 'Export', function () {
+            console.log(_this.gui.exportPreset());
+        });
     };
     Debugger.prototype.begin = function () {
         if (!this.enabled)
@@ -31,30 +37,30 @@ var Debugger = (function () {
         if (this.folders[name]) {
             return this.folders[name];
         }
-        var folder = this.gui.addFolder(name);
-        if (!expanded) {
-            folder.close();
-        }
-        else {
-            folder.open();
-        }
+        var folder = this.gui.addFolder({
+            title: name,
+            expanded: expanded
+        });
         this.folders[name] = folder;
         return this.folders[name];
     };
     Debugger.prototype.addButton = function (folder, label, callback) {
-        var props = { click: callback };
-        var usedGUI = folder !== undefined ? folder : this.gui;
-        return usedGUI.add(props, 'click').name(label);
+        var gui = folder !== undefined ? folder : this.gui;
+        var btn = gui.addButton({
+            title: label
+        });
+        btn.on('click', callback);
+        return btn;
     };
     Debugger.prototype.addColor = function (folder, obj, value, props) {
         var usedGUI = folder !== undefined ? folder : this.gui;
-        var added = usedGUI.addColor(obj, value);
+        var added = usedGUI.addInput(obj, value, {
+            label: props.label !== undefined ? props.label : value
+        });
         if (props !== undefined) {
-            if (props.label !== undefined)
-                added.name(props.label);
             if (props.onChange !== undefined) {
-                added.onChange(function () {
-                    props.onChange();
+                added.on('change', function (evt) {
+                    props.onChange(evt.value);
                 });
             }
         }
@@ -62,55 +68,48 @@ var Debugger = (function () {
     };
     Debugger.prototype.addOptions = function (folder, label, options, callback) {
         var usedGUI = folder !== undefined ? folder : this.gui;
-        var params = {
-            value: options[0]
-        };
-        return usedGUI.add(params, 'value', options).onChange(function (value) {
-            var index = options.indexOf(value);
-            callback(value, index);
-        }).name(label);
+        var added = usedGUI.addBlade({
+            view: 'list',
+            label: label,
+            options: options,
+            value: options[0].value,
+        });
+        added.on('change', function (evt) {
+            callback(evt.value);
+        });
+        return added;
     };
     Debugger.prototype.addInput = function (folder, obj, value, props) {
         var usedGUI = folder !== undefined ? folder : this.gui;
-        var added = usedGUI;
+        var properties = {};
         if (props !== undefined) {
+            if (props.label !== undefined)
+                properties['label'] = props.label;
             if (props.min !== undefined) {
-                if (props.step !== undefined) {
-                    added = usedGUI.add(obj, value, props.min, props.max, props.step);
-                }
-                else {
-                    added = usedGUI.add(obj, value, props.min, props.max);
-                }
-            }
-            else {
-                added = usedGUI.add(obj, value);
+                properties['min'] = props.min;
+                properties['max'] = props.max;
+                if (props.step !== undefined)
+                    properties['step'] = props.step;
             }
         }
-        else {
-            added = usedGUI.add(obj, value);
-        }
-        if (added !== undefined) {
-            if (props !== undefined) {
-                if (props.label !== undefined)
-                    added.name(props.label);
-                if (props.onChange !== undefined) {
-                    added.onChange(function () {
-                        props.onChange();
-                    });
-                }
-            }
+        var added = usedGUI.addInput(obj, value, properties);
+        if (props !== undefined && props.onChange !== undefined) {
+            added.on('change', function (evt) {
+                props.onChange(evt.value);
+            });
         }
         return added;
     };
+    Debugger.prototype.addMonitor = function (folder, obj, value, props) {
+        var usedGUI = folder !== undefined ? folder : this.gui;
+        return usedGUI.addMonitor(obj, value, props);
+    };
     Debugger.prototype.removeFolder = function (name) {
-        var folder = this.gui.__folders[name];
+        var folder = this.folders[name];
         if (!folder)
             return;
-        folder.close();
-        this.gui.__ul.removeChild(folder.domElement.parentNode);
-        delete this.gui.__folders[name];
+        this.gui.remove(folder);
         delete this.folders[name];
-        this.gui.onResize();
     };
     return Debugger;
 }());

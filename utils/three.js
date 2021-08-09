@@ -51,7 +51,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateTextureData = exports.Pass = exports.DoubleFBO = exports.FBO = exports.setBlendScreen = exports.setBlendMultiply = exports.setBlendAdd = exports.setBlendNormal = exports.anchorGeometryTL = exports.anchorGeometry = exports.parseShader = exports.findObjectsWithName = exports.dispose = exports.triangle = exports.plane = exports.orthoCamera = void 0;
+exports.updateTextureData = exports.Pass = exports.DoubleFBO = exports.FBO = exports.setBlendScreen = exports.setBlendMultiply = exports.setBlendAdd = exports.setBlendNormal = exports.anchorGeometryTL = exports.anchorGeometry = exports.parseShader = exports.findObjectsWithName = exports.updateCameraOrtho = exports.updateCameraPerspective = exports.dispose = exports.triangle = exports.plane = exports.orthoCamera = void 0;
 var three_1 = require("three");
 var dom_1 = require("./dom");
 exports.orthoCamera = new three_1.OrthographicCamera(-0.5, 0.5, 0.5, -0.5, 0, 1);
@@ -76,16 +76,37 @@ function dispose(object) {
     }
     if (object.parent)
         object.parent.remove(object);
-    if (object.geometry)
-        object.geometry.dispose();
-    if (object.material) {
-        if (object.material.map) {
-            object.material.map.dispose();
+    if (object instanceof three_1.Mesh) {
+        if (object.geometry)
+            object.geometry.dispose();
+        if (object.material) {
+            if (object.material.map) {
+                object.material.map.dispose();
+            }
+            object.material.dispose();
         }
-        object.material.dispose();
     }
 }
 exports.dispose = dispose;
+function updateCameraPerspective(camera, width, height) {
+    var aspect = width / height;
+    var dist = Math.abs(camera.position.z);
+    var fov = 2 * Math.atan(width / aspect / (2 * dist)) * (180 / Math.PI);
+    camera.fov = fov;
+    camera.aspect = aspect;
+    camera.updateProjectionMatrix();
+}
+exports.updateCameraPerspective = updateCameraPerspective;
+function updateCameraOrtho(camera, width, height) {
+    camera.left = width / -2;
+    camera.right = width / 2;
+    camera.top = height / 2;
+    camera.bottom = height / -2;
+    camera.position.x = width / 2;
+    camera.position.y = height / -2;
+    camera.updateProjectionMatrix();
+}
+exports.updateCameraOrtho = updateCameraOrtho;
 function findObjectsWithName(object, value) {
     var children = [];
     object.children.forEach(function (child) {

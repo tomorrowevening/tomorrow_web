@@ -83,9 +83,9 @@ declare const _default: {
     cubicBezier: typeof cubicBezier;
     mixArrays: typeof mixArrays;
     raf: import("./utils/raf").Raf;
-    orthoCamera: any;
-    plane: any;
-    triangle: any;
+    orthoCamera: import("three").OrthographicCamera;
+    plane: import("three").PlaneGeometry;
+    triangle: import("three").BufferGeometry;
     dispose: typeof dispose;
     findObjectsWithName: typeof findObjectsWithName;
     parseShader: typeof parseShader;
