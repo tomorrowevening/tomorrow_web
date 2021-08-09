@@ -1,5 +1,16 @@
-import * as Stats from 'stats-js';
-import * as dat from 'dat.gui';
+import {
+  BladeApi,
+  BladeController,
+  ButtonApi,
+  InputBindingApi,
+  MonitorBindingApi,
+  View
+} from '@tweakpane/core'
+import {
+  FolderApi,
+  Pane
+} from 'tweakpane';
+import * as EssentialsPlugin from '@tweakpane/plugin-essentials';
 
 /**
  * Single Debugging object to house dat.gui & stats
@@ -7,20 +18,24 @@ import * as dat from 'dat.gui';
 export class Debugger {
   enabled: boolean = document.location.href.search('debug') > -1;
 
-  gui: dat.GUI;
+  gui!: Pane;
 
-  stats: any;
+  stats!: any;
 
   folders: Object = {};
 
   init() {
     if (!this.enabled) return;
 
-    this.stats = new Stats();
-    document.body.appendChild(this.stats.dom);
-
-    this.gui = new dat.GUI();
-    this.gui.domElement.parentElement.style.zIndex = '10000';
+    this.gui = new Pane();
+    this.gui.element.style.zIndex = '10000';
+    this.gui.registerPlugin(EssentialsPlugin);
+    this.stats = this.gui.addBlade({
+      view: 'fpsgraph'
+    });
+    this.addButton(undefined, 'Export', () => {
+      console.log(this.gui.exportPreset());
+    });
   }
 
   /**
@@ -50,12 +65,10 @@ export class Debugger {
       return this.folders[name];
     }
 
-    const folder = this.gui.addFolder(name);
-    if (!expanded) {
-      folder.close();
-    } else {
-      folder.open();
-    }
+    const folder = this.gui.addFolder({
+      title: name,
+      expanded: expanded
+    });
 
     this.folders[name] = folder;
     return this.folders[name];
@@ -68,10 +81,13 @@ export class Debugger {
    * @param callback The callback function
    * @returns The created GUI
    */
-  addButton(folder: dat.gui.GUI | undefined, label: string, callback: () => void): dat.gui.GUI {
-    const props = { click: callback };
-    const usedGUI = folder !== undefined ? folder : this.gui;
-    return usedGUI.add(props, 'click').name(label);
+  addButton(folder: FolderApi | undefined, label: string, callback: () => void): ButtonApi {
+    const gui = folder !== undefined ? folder : this.gui;
+    const btn = gui.addButton({
+      title: label
+    });
+    btn.on('click', callback);
+    return btn;
   }
 
   /**
@@ -82,20 +98,16 @@ export class Debugger {
    * @param props Optional predefined options
    * @returns The created GUI
    */
-   addColor(
-    folder: dat.gui.GUI | undefined,
-    obj: any,
-    value: string,
-    props?: any
-  ): dat.gui.GUI {
+  addColor(folder: FolderApi | undefined, obj: any, value: string, props?: any): InputBindingApi<unknown, any> {
     const usedGUI = folder !== undefined ? folder : this.gui;
-    let added: dat.gui.GUI = usedGUI.addColor(obj, value);
-
+    const added = usedGUI.addInput(obj, value, {
+      label: props.label !== undefined ? props.label : value
+    });
+     
     if (props !== undefined) {
-      if (props.label !== undefined) added.name(props.label);
       if (props.onChange !== undefined) {
-        added.onChange(() => {
-          props.onChange();
+        added.on('change', (evt) => {
+          props.onChange(evt.value);
         });
       }
     }
@@ -111,20 +123,19 @@ export class Debugger {
    * @param callback The callback function
    * @returns The created GUI
    */
-  addOptions(
-    folder: dat.gui.GUI | undefined,
-    label: string,
-    options: Array<any>,
-    callback: (value: any, index: number) => void
-  ): dat.gui.GUI {
+  addOptions(folder: FolderApi | undefined, label: string, options: Array<any>, callback: (value: any) => void): BladeApi<BladeController<View>> {
     const usedGUI = folder !== undefined ? folder : this.gui;
-    const params = {
-      value: options[0]
-    };
-    return usedGUI.add(params, 'value', options).onChange((value: any) => {
-      const index = options.indexOf(value);
-      callback(value, index);
-    }).name(label);
+    const added = usedGUI.addBlade({
+      view: 'list',
+      label: label,
+      options: options,
+      value: options[0].value,
+    });
+    // @ts-ignore
+    added.on('change', (evt: any) => {
+      callback(evt.value);
+    });
+    return added;
   }
 
   /**
@@ -135,51 +146,45 @@ export class Debugger {
    * @param props Optional predefined options
    * @returns The created GUI
    */
-  addInput(
-    folder: dat.gui.GUI | undefined,
-    obj: any,
-    value: string,
-    props?: any
-  ): dat.gui.GUI {
+  addInput(folder: FolderApi | undefined, obj: any, value: string, props?: any): InputBindingApi<unknown, any> {
     const usedGUI = folder !== undefined ? folder : this.gui;
-    let added: dat.gui.GUI = usedGUI;
-
+    const properties = {};
     if (props !== undefined) {
+      if (props.label !== undefined) properties['label'] = props.label;
       if (props.min !== undefined) {
-        if (props.step !== undefined) {
-          added = usedGUI.add(obj, value, props.min, props.max, props.step);
-        } else {
-          added = usedGUI.add(obj, value, props.min, props.max);
-        }
-      } else {
-        added = usedGUI.add(obj, value);
+        properties['min'] = props.min;
+        properties['max'] = props.max;
+        if (props.step !== undefined) properties['step'] = props.step;
       }
-    } else {
-      added = usedGUI.add(obj, value);
     }
-
-    if (added !== undefined) {
-      if (props !== undefined) {
-        if (props.label !== undefined) added.name(props.label);
-        if (props.onChange !== undefined) {
-          added.onChange(() => {
-            props.onChange();
-          });
-        }
-      }
+    const added = usedGUI.addInput(obj, value, properties);
+    if (props !== undefined && props.onChange !== undefined) {
+      added.on('change', (evt) => {
+        props.onChange(evt.value);
+      });
     }
 
     return added;
   }
 
+  /**
+   * An object to debug
+   * @param folder An optional folder
+   * @param obj The object with the value
+   * @param value The value you want to modify/listen to
+   * @param props Optional predefined options
+   * @returns The created monitor
+   */
+   addMonitor(folder: FolderApi | undefined, obj: any, value: string, props?: any): MonitorBindingApi<any> {
+    const usedGUI = folder !== undefined ? folder : this.gui;
+    return usedGUI.addMonitor(obj, value, props);
+  }
+
   removeFolder(name: string) {
-    const folder = this.gui.__folders[name];
+    const folder = this.folders[name];
     if (!folder) return;
-    folder.close();
-    this.gui.__ul.removeChild(folder.domElement.parentNode);
-    delete this.gui.__folders[name];
+    this.gui.remove(folder);
     delete this.folders[name];
-    this.gui.onResize();
   }
 }
 
