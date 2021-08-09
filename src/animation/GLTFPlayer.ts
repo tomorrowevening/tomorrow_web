@@ -139,13 +139,13 @@ export default class GLTFPlayer {
 
   loopOnce() {
     if (this.currentAnimation.length > 0) {
-      this.currentAction.setLoop(LoopOnce);
+      this.currentAction.setLoop(LoopOnce, 0);
     }
   }
 
-  loopRepeat() {
+  loopRepeat(repetitions: number = Infinity) {
     if (this.currentAnimation.length > 0) {
-      this.currentAction.setLoop(LoopRepeat);
+      this.currentAction.setLoop(LoopRepeat, repetitions);
     }
   }
 
