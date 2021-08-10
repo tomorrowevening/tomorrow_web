@@ -89,8 +89,6 @@ interface ShaderParams {
     uniforms: object;
     webgl2?: boolean;
 }
-export declare class RawShader extends RawShaderMaterial {
-    constructor(opts: ShaderParams);
-}
+export declare function RawShader(opts: ShaderParams): RawShaderMaterial;
 export {};
 //# sourceMappingURL=three.d.ts.map
