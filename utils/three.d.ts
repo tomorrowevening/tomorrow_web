@@ -6,6 +6,7 @@ export declare function dispose(object: Object3D | Mesh): void;
 export declare function updateCameraPerspective(camera: PerspectiveCamera, width: number, height: number): void;
 export declare function updateCameraOrtho(camera: OrthographicCamera, width: number, height: number): void;
 export declare function findObjectsWithName(object: Object3D, value: string): Array<Object3D>;
+export declare function compileShader(source: string, fragment?: boolean): string;
 export declare function parseShader(shader: string, defines: Array<string>, options: Array<string>): string;
 export declare function anchorGeometry(geometry: BufferGeometry, x: number, y: number, z: number): void;
 export declare function anchorGeometryTL(geometry: BufferGeometry): void;

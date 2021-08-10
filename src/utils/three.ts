@@ -26,6 +26,7 @@ import {
   Texture,
   WebGLRenderTarget,
 } from 'three';
+import { WEBGL } from 'three/examples/jsm/WebGL';
 import { isiOS } from './dom';
 
 /**
@@ -137,6 +138,47 @@ export function findObjectsWithName(object: Object3D, value: string): Array<Obje
     }
   });
   return children;
+}
+
+/**
+ * Reference: https://webgl2fundamentals.org/webgl/lessons/webgl1-to-webgl2.html
+ * @param source Original shader source
+ * @param fragment If it's a fragment shader or not
+ * @returns An updated shader source
+ */
+export function compileShader(source: string, fragment: boolean = true): string {
+  let shader = '';
+  if (WEBGL.isWebGL2Available()) {
+    if (fragment) {
+      const definitions: Array<string> = [
+        '#define varying in',
+        'out highp vec4 pc_fragColor;',
+        '#define gl_FragColor pc_fragColor',
+        '#define gl_FragDepthEXT gl_FragDepth',
+        '#define texture2D texture',
+        '#define textureCube texture',
+        '#define texture2DProj textureProj',
+        '#define texture2DLodEXT textureLod',
+        '#define texture2DProjLodEXT textureProjLod',
+        '#define textureCubeLodEXT textureLod',
+        '#define texture2DGradEXT textureGrad',
+        '#define texture2DProjGradEXT textureProjGrad',
+        '#define textureCubeGradEXT textureGrad'
+      ];
+      shader = definitions.join('\n');
+    } else {
+      const definitions: Array<string> = [
+        '#define attribute in',
+        '#define varying out',
+        '#define texture2D texture'
+      ];
+      shader = definitions.join('\n');
+    }
+    shader += `\n${source}`;
+  } else {
+    shader = source;
+  }
+  return shader;
 }
 
 /**

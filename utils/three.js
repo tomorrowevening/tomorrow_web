@@ -51,8 +51,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateTextureData = exports.Pass = exports.DoubleFBO = exports.FBO = exports.setBlendScreen = exports.setBlendMultiply = exports.setBlendAdd = exports.setBlendNormal = exports.anchorGeometryTL = exports.anchorGeometry = exports.parseShader = exports.findObjectsWithName = exports.updateCameraOrtho = exports.updateCameraPerspective = exports.dispose = exports.triangle = exports.plane = exports.orthoCamera = void 0;
+exports.updateTextureData = exports.Pass = exports.DoubleFBO = exports.FBO = exports.setBlendScreen = exports.setBlendMultiply = exports.setBlendAdd = exports.setBlendNormal = exports.anchorGeometryTL = exports.anchorGeometry = exports.parseShader = exports.compileShader = exports.findObjectsWithName = exports.updateCameraOrtho = exports.updateCameraPerspective = exports.dispose = exports.triangle = exports.plane = exports.orthoCamera = void 0;
 var three_1 = require("three");
+var WebGL_1 = require("three/examples/jsm/WebGL");
 var dom_1 = require("./dom");
 exports.orthoCamera = new three_1.OrthographicCamera(-0.5, 0.5, 0.5, -0.5, 0, 1);
 exports.plane = new three_1.PlaneBufferGeometry(1, 1);
@@ -121,6 +122,44 @@ function findObjectsWithName(object, value) {
     return children;
 }
 exports.findObjectsWithName = findObjectsWithName;
+function compileShader(source, fragment) {
+    if (fragment === void 0) { fragment = true; }
+    var shader = '';
+    if (WebGL_1.WEBGL.isWebGL2Available()) {
+        if (fragment) {
+            var definitions = [
+                '#define varying in',
+                'out highp vec4 pc_fragColor;',
+                '#define gl_FragColor pc_fragColor',
+                '#define gl_FragDepthEXT gl_FragDepth',
+                '#define texture2D texture',
+                '#define textureCube texture',
+                '#define texture2DProj textureProj',
+                '#define texture2DLodEXT textureLod',
+                '#define texture2DProjLodEXT textureProjLod',
+                '#define textureCubeLodEXT textureLod',
+                '#define texture2DGradEXT textureGrad',
+                '#define texture2DProjGradEXT textureProjGrad',
+                '#define textureCubeGradEXT textureGrad'
+            ];
+            shader = definitions.join('\n');
+        }
+        else {
+            var definitions = [
+                '#define attribute in',
+                '#define varying out',
+                '#define texture2D texture'
+            ];
+            shader = definitions.join('\n');
+        }
+        shader += "\n" + source;
+    }
+    else {
+        shader = source;
+    }
+    return shader;
+}
+exports.compileShader = compileShader;
 function parseShader(shader, defines, options) {
     var output = shader;
     var definitions = "// defines\n" + defines.join('\n');
