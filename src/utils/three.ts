@@ -1,11 +1,13 @@
 import {
   AddEquation,
+  Blending,
   BufferGeometry,
   ClampToEdgeWrapping,
   CustomBlending,
   DstColorFactor,
   Float32BufferAttribute,
   FloatType,
+  GLSL3,
   HalfFloatType,
   LinearFilter,
   Material,
@@ -18,7 +20,9 @@ import {
   OneMinusSrcAlphaFactor,
   OrthographicCamera,
   PerspectiveCamera,
+  Plane,
   PlaneBufferGeometry,
+  RawShaderMaterial,
   RGBAFormat,
   Scene,
   ShaderChunk,
@@ -179,37 +183,6 @@ export function compileShader(source: string, fragment: boolean = true): string 
     shader = source;
   }
   return shader;
-}
-
-/**
- * Replaces a large string with Three's ShaderChunk.
- * ie: #include <common> gets replaced with the actual code
- * @param shader The block of code
- * @param defines Custom array of defines to inject into your shader.
- * @param options Custom array of options to inject into your shader.
- * @returns The compiled shader
- */
-export function parseShader(shader: string, defines: Array<string>, options: Array<string>) {
-  let output = shader;
-  const definitions = `// defines\n${defines.join('\n')}`;
-  const opts = `// options\n${options.join('\n')}`;
-  output = output.replace('/** DEFINES */', definitions);
-  output = output.replace('/** OPTIONS */', opts);
-
-  // example:
-  // #include <common>
-  const includes = output.match(/\#include\s?\<\s?(\w+)\s?\>/gm);
-  if (includes) {
-    const total = includes.length;
-    for (let i = 0; i < total; ++i) {
-      const n = includes[i];
-      const o = n.substr(10, n.length - 11);
-      const chunk = `// ${o}\n${ShaderChunk[o]}`;
-      output = output.replace(n, chunk);
-    }
-  }
-
-  return output;
 }
 
 /**
@@ -435,4 +408,103 @@ export async function updateTextureData(
 
     dataBase64 = reader.readAsDataURL(svgBlob);
   });
+}
+
+interface ShaderParams {
+  alphaTest?: number;
+  alphaToCoverage?: number;
+  blendDst?: number;
+  blendDstAlpha?: number;
+  blendEquation?: number;
+  blending?: Blending;
+  blendSrc?: number;
+  blendSrcAlpha?: number;
+  clipIntersection?: boolean;
+  clipping?: boolean;
+  clippingPlanes?: Array<Plane>;
+  clipShadows?: boolean;
+  colorWrite?: boolean;
+  defines?: object;
+  depthFunc?: number;
+  depthTest?: boolean;
+  depthWrite?: boolean;
+  dithering?: boolean;
+  extensions?: object;
+  flatShading?: boolean;
+  fog?: boolean;
+  lights?: boolean;
+  linewidth?: number;
+  morphNormals?: boolean;
+  morphTargets?: boolean;
+  opacity?: number;
+  polygonOffset?: boolean;
+  polygonOffsetFactor?: number;
+  polygonOffsetUnits?: number;
+  precision?: string;
+  premultipliedAlpha?: boolean;
+  shadowSide?: number;
+  side?: number;
+  stencilWrite?: boolean;
+  stencilWriteMask?: number;
+  stencilFunc?: number;
+  stencilRef?: number;
+  stencilFuncMask?: number;
+  stencilFail?: number;
+  stencilZFail?: number;
+  stencilZPass?: number;
+  toneMapped?: boolean;
+  transparent?: boolean;
+  userData?: object;
+  vertexColors?: boolean;
+  wireframe?: boolean;
+  // Core
+  name: string;
+  vertex: string;
+  fragment: string;
+  uniforms: object;
+  webgl2?: boolean;
+}
+
+export class RawShader extends RawShaderMaterial {
+  constructor(opts: ShaderParams) {
+    const precision = opts.precision !== undefined ? opts.precision : 'highp';
+    const precisionInjection = `precision ${precision} float;`;
+    const shaderName = `#define SHADER_NAME ${opts.name}`;
+    const vertName = opts.vertex.search('SHADER_NAME') > 0 ? '' : `${shaderName}Vert`;
+    const fragName = opts.fragment.search('SHADER_NAME') > 0 ? '' : `${shaderName}Frag`;
+    const vertex = [
+      precisionInjection,
+      vertName,
+      opts.vertex
+    ].join('\n');
+    const fragment = [
+      precisionInjection,
+      fragName,
+      opts.fragment
+    ].join('\n');
+
+    const shader = {
+      // Custom
+      name: opts.name,
+      uniforms: opts.uniforms,
+      vertexShader: vertex,
+      fragmentShader: fragment,
+      glslVersion: null
+    };
+
+    for (let i in opts) {
+      if (i !== 'vertex' && i !== 'fragment' && i !== 'webgl2') {
+        shader[i] = opts[i];
+      }
+    }
+
+    if (WEBGL.isWebGL2Available() && opts.webgl2 === true) {
+      shader.vertexShader = compileShader(vertex, false);
+      shader.fragmentShader = compileShader(fragment);
+      // @ts-ignore
+      shader.glslVersion = GLSL3;
+    }
+    // @ts-ignore
+    super(shader);
+  }
 }
