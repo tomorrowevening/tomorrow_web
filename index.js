@@ -65,7 +65,6 @@ exports.default = {
     triangle: three_1.triangle,
     dispose: three_1.dispose,
     findObjectsWithName: three_1.findObjectsWithName,
-    parseShader: three_1.parseShader,
     anchorGeometry: three_1.anchorGeometry,
     anchorGeometryTL: three_1.anchorGeometryTL,
     setBlendNormal: three_1.setBlendNormal,
@@ -75,5 +74,9 @@ exports.default = {
     FBO: three_1.FBO,
     DoubleFBO: three_1.DoubleFBO,
     Pass: three_1.Pass,
-    updateTextureData: three_1.updateTextureData
+    updateTextureData: three_1.updateTextureData,
+    compileShader: three_1.compileShader,
+    RawShader: three_1.RawShader,
+    updateCameraPerspective: three_1.updateCameraPerspective,
+    updateCameraOrtho: three_1.updateCameraOrtho
 };

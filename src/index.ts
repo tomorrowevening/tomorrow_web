@@ -54,7 +54,6 @@ import {
   triangle,
   dispose,
   findObjectsWithName,
-  parseShader,
   anchorGeometry,
   anchorGeometryTL,
   setBlendNormal,
@@ -64,7 +63,11 @@ import {
   FBO,
   DoubleFBO,
   Pass,
-  updateTextureData
+  updateTextureData,
+  compileShader,
+  RawShader,
+  updateCameraPerspective,
+  updateCameraOrtho
 } from './utils/three';
 
 export default {
@@ -120,7 +123,6 @@ export default {
   triangle,
   dispose,
   findObjectsWithName,
-  parseShader,
   anchorGeometry,
   anchorGeometryTL,
   setBlendNormal,
@@ -130,5 +132,9 @@ export default {
   FBO,
   DoubleFBO,
   Pass,
-  updateTextureData
+  updateTextureData,
+  compileShader,
+  RawShader,
+  updateCameraPerspective,
+  updateCameraOrtho
 };

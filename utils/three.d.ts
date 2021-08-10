@@ -1,4 +1,4 @@
-import { BufferGeometry, Material, Mesh, Object3D, OrthographicCamera, PerspectiveCamera, PlaneBufferGeometry, Scene, Texture, WebGLRenderTarget } from 'three';
+import { Blending, BufferGeometry, Material, Mesh, Object3D, OrthographicCamera, PerspectiveCamera, Plane, PlaneBufferGeometry, RawShaderMaterial, Scene, Texture, WebGLRenderTarget } from 'three';
 export declare const orthoCamera: OrthographicCamera;
 export declare const plane: PlaneBufferGeometry;
 export declare const triangle: BufferGeometry;
@@ -7,7 +7,6 @@ export declare function updateCameraPerspective(camera: PerspectiveCamera, width
 export declare function updateCameraOrtho(camera: OrthographicCamera, width: number, height: number): void;
 export declare function findObjectsWithName(object: Object3D, value: string): Array<Object3D>;
 export declare function compileShader(source: string, fragment?: boolean): string;
-export declare function parseShader(shader: string, defines: Array<string>, options: Array<string>): string;
 export declare function anchorGeometry(geometry: BufferGeometry, x: number, y: number, z: number): void;
 export declare function anchorGeometryTL(geometry: BufferGeometry): void;
 export declare function setBlendNormal(material: Material): void;
@@ -37,4 +36,61 @@ export declare class Pass {
     draw(): void;
 }
 export declare function updateTextureData(svgElement: SVGElement, imgWid: number, imgHei: number): Promise<Texture>;
+interface ShaderParams {
+    alphaTest?: number;
+    alphaToCoverage?: number;
+    blendDst?: number;
+    blendDstAlpha?: number;
+    blendEquation?: number;
+    blending?: Blending;
+    blendSrc?: number;
+    blendSrcAlpha?: number;
+    clipIntersection?: boolean;
+    clipping?: boolean;
+    clippingPlanes?: Array<Plane>;
+    clipShadows?: boolean;
+    colorWrite?: boolean;
+    defines?: object;
+    depthFunc?: number;
+    depthTest?: boolean;
+    depthWrite?: boolean;
+    dithering?: boolean;
+    extensions?: object;
+    flatShading?: boolean;
+    fog?: boolean;
+    lights?: boolean;
+    linewidth?: number;
+    morphNormals?: boolean;
+    morphTargets?: boolean;
+    opacity?: number;
+    polygonOffset?: boolean;
+    polygonOffsetFactor?: number;
+    polygonOffsetUnits?: number;
+    precision?: string;
+    premultipliedAlpha?: boolean;
+    shadowSide?: number;
+    side?: number;
+    stencilWrite?: boolean;
+    stencilWriteMask?: number;
+    stencilFunc?: number;
+    stencilRef?: number;
+    stencilFuncMask?: number;
+    stencilFail?: number;
+    stencilZFail?: number;
+    stencilZPass?: number;
+    toneMapped?: boolean;
+    transparent?: boolean;
+    userData?: object;
+    vertexColors?: boolean;
+    wireframe?: boolean;
+    name: string;
+    vertex: string;
+    fragment: string;
+    uniforms: object;
+    webgl2?: boolean;
+}
+export declare class RawShader extends RawShaderMaterial {
+    constructor(opts: ShaderParams);
+}
+export {};
 //# sourceMappingURL=three.d.ts.map

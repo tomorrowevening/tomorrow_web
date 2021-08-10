@@ -51,7 +51,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateTextureData = exports.Pass = exports.DoubleFBO = exports.FBO = exports.setBlendScreen = exports.setBlendMultiply = exports.setBlendAdd = exports.setBlendNormal = exports.anchorGeometryTL = exports.anchorGeometry = exports.parseShader = exports.compileShader = exports.findObjectsWithName = exports.updateCameraOrtho = exports.updateCameraPerspective = exports.dispose = exports.triangle = exports.plane = exports.orthoCamera = void 0;
+exports.RawShader = exports.updateTextureData = exports.Pass = exports.DoubleFBO = exports.FBO = exports.setBlendScreen = exports.setBlendMultiply = exports.setBlendAdd = exports.setBlendNormal = exports.anchorGeometryTL = exports.anchorGeometry = exports.compileShader = exports.findObjectsWithName = exports.updateCameraOrtho = exports.updateCameraPerspective = exports.dispose = exports.triangle = exports.plane = exports.orthoCamera = void 0;
 var three_1 = require("three");
 var WebGL_1 = require("three/examples/jsm/WebGL");
 var dom_1 = require("./dom");
@@ -160,25 +160,6 @@ function compileShader(source, fragment) {
     return shader;
 }
 exports.compileShader = compileShader;
-function parseShader(shader, defines, options) {
-    var output = shader;
-    var definitions = "// defines\n" + defines.join('\n');
-    var opts = "// options\n" + options.join('\n');
-    output = output.replace('/** DEFINES */', definitions);
-    output = output.replace('/** OPTIONS */', opts);
-    var includes = output.match(/\#include\s?\<\s?(\w+)\s?\>/gm);
-    if (includes) {
-        var total = includes.length;
-        for (var i = 0; i < total; ++i) {
-            var n = includes[i];
-            var o = n.substr(10, n.length - 11);
-            var chunk = "// " + o + "\n" + three_1.ShaderChunk[o];
-            output = output.replace(n, chunk);
-        }
-    }
-    return output;
-}
-exports.parseShader = parseShader;
 function anchorGeometry(geometry, x, y, z) {
     geometry.applyMatrix4(new three_1.Matrix4().makeTranslation(x, -y, -z));
 }
@@ -324,3 +305,45 @@ function updateTextureData(svgElement, imgWid, imgHei) {
     });
 }
 exports.updateTextureData = updateTextureData;
+var RawShader = (function (_super) {
+    __extends(RawShader, _super);
+    function RawShader(opts) {
+        var _this = this;
+        var precision = opts.precision !== undefined ? opts.precision : 'highp';
+        var precisionInjection = "precision " + precision + " float;";
+        var shaderName = "#define SHADER_NAME " + opts.name;
+        var vertName = opts.vertex.search('SHADER_NAME') > 0 ? '' : shaderName + "Vert";
+        var fragName = opts.fragment.search('SHADER_NAME') > 0 ? '' : shaderName + "Frag";
+        var vertex = [
+            precisionInjection,
+            vertName,
+            opts.vertex
+        ].join('\n');
+        var fragment = [
+            precisionInjection,
+            fragName,
+            opts.fragment
+        ].join('\n');
+        var shader = {
+            name: opts.name,
+            uniforms: opts.uniforms,
+            vertexShader: vertex,
+            fragmentShader: fragment,
+            glslVersion: null
+        };
+        for (var i in opts) {
+            if (i !== 'vertex' && i !== 'fragment' && i !== 'webgl2') {
+                shader[i] = opts[i];
+            }
+        }
+        if (WebGL_1.WEBGL.isWebGL2Available() && opts.webgl2 === true) {
+            shader.vertexShader = compileShader(vertex, false);
+            shader.fragmentShader = compileShader(fragment);
+            shader.glslVersion = three_1.GLSL3;
+        }
+        _this = _super.call(this, shader) || this;
+        return _this;
+    }
+    return RawShader;
+}(three_1.RawShaderMaterial));
+exports.RawShader = RawShader;

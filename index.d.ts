@@ -6,7 +6,7 @@ import GLTFPlayer from './animation/GLTFPlayer';
 import { Smooth, SmoothController } from './animation/Smooth';
 import { delay, fileName, guid } from './utils/dom';
 import { between, clamp, normalize, mix, map, roundTo, distance, distance2, distance3, random, getAngle, toDeg, toRad, cosRange, precisionComplete, cubicBezier, mixArrays } from './utils/math';
-import { dispose, findObjectsWithName, parseShader, anchorGeometry, anchorGeometryTL, setBlendNormal, setBlendAdd, setBlendMultiply, setBlendScreen, FBO, DoubleFBO, Pass, updateTextureData } from './utils/three';
+import { dispose, findObjectsWithName, anchorGeometry, anchorGeometryTL, setBlendNormal, setBlendAdd, setBlendMultiply, setBlendScreen, FBO, DoubleFBO, Pass, updateTextureData, compileShader, RawShader, updateCameraPerspective, updateCameraOrtho } from './utils/three';
 declare const _default: {
     ease: {
         LINEAR: string;
@@ -88,7 +88,6 @@ declare const _default: {
     triangle: import("three").BufferGeometry;
     dispose: typeof dispose;
     findObjectsWithName: typeof findObjectsWithName;
-    parseShader: typeof parseShader;
     anchorGeometry: typeof anchorGeometry;
     anchorGeometryTL: typeof anchorGeometryTL;
     setBlendNormal: typeof setBlendNormal;
@@ -99,6 +98,10 @@ declare const _default: {
     DoubleFBO: typeof DoubleFBO;
     Pass: typeof Pass;
     updateTextureData: typeof updateTextureData;
+    compileShader: typeof compileShader;
+    RawShader: typeof RawShader;
+    updateCameraPerspective: typeof updateCameraPerspective;
+    updateCameraOrtho: typeof updateCameraOrtho;
 };
 export default _default;
 //# sourceMappingURL=index.d.ts.map
