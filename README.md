@@ -167,19 +167,3 @@ raf.add(() => {
 });
 raf.play();
 ```
-
-### Three
-```
-import {
-    parseShader
-} from 'tomorrow_web/utils/three';
-import { ShaderLib } from 'three/renderers/shaders/ShaderLib';
-
-const fragment = parseShader(
-    ShaderLib.phong.fragmentShader,
-    [],
-    []
-);
-console.log('Default Phong Fragment:');
-console.log(fragment);
-```

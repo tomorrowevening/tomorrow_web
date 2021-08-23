@@ -1,6 +1,6 @@
 {
   "name": "tomorrow_web",
-  "version": "0.0.988",
+  "version": "0.0.989",
   "description": "Web Utilities",
   "main": "index.js",
   "scripts": {
@@ -48,6 +48,7 @@
     "index.d.ts.map",
     "index.js",
     "animation/",
+    "three/",
     "utils/",
     "LICENSE",
     "README.md"
