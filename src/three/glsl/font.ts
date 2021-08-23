@@ -1,6 +1,4 @@
-export const TextVertex = `#version 300 es
-
-in vec2 uv;
+export const TextVertex = `in vec2 uv;
 in vec4 position;
 uniform mat4 projectionMatrix;
 uniform mat4 modelViewMatrix;
@@ -11,17 +9,14 @@ void main() {
   gl_Position = projectionMatrix * modelViewMatrix * position;
 }`;
 
-export const TextFragment = `#version 300 es
-#ifdef GL_OES_standard_derivatives
+export const TextFragment = `#ifdef GL_OES_standard_derivatives
 #extension GL_OES_standard_derivatives : enable
 #endif
 
-precision highp float;
 uniform float opacity;
 uniform vec3 color;
 uniform sampler2D map;
 in vec2 vUv;
-out vec4 fragColor;
 
 #define alphaTest 1.0 / 255.0
 
@@ -33,6 +28,6 @@ void main() {
   vec3 img = texture(map, vUv).rgb;
   float sigDist = median(img.r, img.g, img.b) - 0.5;
   float alpha = clamp(sigDist/fwidth(sigDist) + 0.5, 0.0, 1.0);
-  fragColor = vec4(color.xyz, alpha * opacity);
-  if (fragColor.a < alphaTest) discard;
+  pc_fragColor = vec4(color.xyz, alpha * opacity);
+  if (pc_fragColor.a < alphaTest) discard;
 }`;

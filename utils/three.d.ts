@@ -6,7 +6,7 @@ export declare function dispose(object: Object3D | Mesh): void;
 export declare function updateCameraPerspective(camera: PerspectiveCamera, width: number, height: number): void;
 export declare function updateCameraOrtho(camera: OrthographicCamera, width: number, height: number): void;
 export declare function findObjectsWithName(object: Object3D, value: string): Array<Object3D>;
-export declare function compileShader(source: string, fragment?: boolean): string;
+export declare function compileShader(source: string, fragment?: boolean, version?: string): string;
 export declare function anchorGeometry(geometry: BufferGeometry, x: number, y: number, z: number): void;
 export declare function anchorGeometryTL(geometry: BufferGeometry): void;
 export declare function setBlendNormal(material: Material): void;
@@ -89,6 +89,7 @@ interface ShaderParams {
     uniforms: {
         [uniform: string]: IUniform;
     };
+    version?: string;
     webgl2?: boolean;
 }
 export declare function RawShader(opts: ShaderParams): {

@@ -151,7 +151,11 @@ export function findObjectsWithName(object: Object3D, value: string): Array<Obje
  * @param fragment If it's a fragment shader or not
  * @returns An updated shader source
  */
-export function compileShader(source: string, fragment: boolean = true): string {
+export function compileShader(
+  source: string,
+  fragment: boolean = true,
+  version: string = ''
+): string {
   let shader = '';
   if (WEBGL.isWebGL2Available()) {
     if (fragment) {
@@ -182,6 +186,9 @@ export function compileShader(source: string, fragment: boolean = true): string 
     shader += `\n${source}`;
   } else {
     shader = source;
+  }
+  if (version.length > 0) {
+    shader = `#version ${version}\n${shader}`;
   }
   return shader;
 }
@@ -463,6 +470,7 @@ interface ShaderParams {
   vertex: string;
   fragment: string;
   uniforms: { [uniform: string]: IUniform };
+  version?: string;
   webgl2?: boolean;
 }
 
@@ -504,8 +512,8 @@ export function RawShader(opts: ShaderParams) {
   }
 
   if (WEBGL.isWebGL2Available() && opts.webgl2 === true) {
-    shader.vertexShader = compileShader(vertex, false);
-    shader.fragmentShader = compileShader(fragment);
+    shader.vertexShader = compileShader(vertex, false, opts.version);
+    shader.fragmentShader = compileShader(fragment, true, opts.version);
     shader.glslVersion = GLSL3;
   }
   return shader;

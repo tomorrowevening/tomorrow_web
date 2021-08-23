@@ -73,7 +73,7 @@ export function findObjectsWithName(object, value) {
     });
     return children;
 }
-export function compileShader(source, fragment = true) {
+export function compileShader(source, fragment = true, version = '') {
     let shader = '';
     if (WEBGL.isWebGL2Available()) {
         if (fragment) {
@@ -106,6 +106,9 @@ export function compileShader(source, fragment = true) {
     }
     else {
         shader = source;
+    }
+    if (version.length > 0) {
+        shader = `#version ${version}\n${shader}`;
     }
     return shader;
 }
@@ -262,8 +265,8 @@ export function RawShader(opts) {
         }
     }
     if (WEBGL.isWebGL2Available() && opts.webgl2 === true) {
-        shader.vertexShader = compileShader(vertex, false);
-        shader.fragmentShader = compileShader(fragment);
+        shader.vertexShader = compileShader(vertex, false, opts.version);
+        shader.fragmentShader = compileShader(fragment, true, opts.version);
         shader.glslVersion = GLSL3;
     }
     return shader;
