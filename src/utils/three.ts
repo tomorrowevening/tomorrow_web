@@ -506,7 +506,7 @@ export function RawShader(opts: ShaderParams) {
   };
 
   for (let i in opts) {
-    if (i !== 'vertex' && i !== 'fragment' && i !== 'webgl2') {
+    if (i !== 'vertex' && i !== 'fragment' && i !== 'version' && i !== 'webgl2') {
       shader[i] = opts[i];
     }
   }

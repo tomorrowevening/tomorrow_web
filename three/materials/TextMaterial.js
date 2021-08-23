@@ -2,7 +2,7 @@ import { DoubleSide, RawShaderMaterial, Vector3 } from 'three';
 import { TextVertex, TextFragment } from '../glsl/font';
 import { RawShader } from '../../utils/three';
 export default class TextMaterial extends RawShaderMaterial {
-    constructor(texture) {
+    constructor(texture, parameters) {
         super(RawShader({
             name: 'Text',
             uniforms: {
@@ -25,6 +25,9 @@ export default class TextMaterial extends RawShaderMaterial {
             side: DoubleSide,
             webgl2: true
         }));
+        if (parameters !== undefined) {
+            this.setValues(parameters);
+        }
     }
     get color() {
         return this.uniforms.color.value;

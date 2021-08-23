@@ -1,6 +1,7 @@
 import {
   DoubleSide,
   RawShaderMaterial,
+  ShaderMaterialParameters,
   Texture,
   Vector3
 } from 'three';
@@ -11,7 +12,7 @@ import {
 import { RawShader } from '../../utils/three';
 
 export default class TextMaterial extends RawShaderMaterial {
-  constructor(texture: Texture | null) {
+  constructor(texture: Texture | null, parameters?: ShaderMaterialParameters) {
     super(RawShader({
       name: 'Text',
       uniforms: {
@@ -37,6 +38,9 @@ export default class TextMaterial extends RawShaderMaterial {
       side: DoubleSide,
       webgl2: true
     }));
+    if (parameters !== undefined) {
+      this.setValues(parameters);
+    }
   }
 
   get color(): Vector3 {
