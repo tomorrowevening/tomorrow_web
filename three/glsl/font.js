@@ -1,5 +1,37 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.TextFragment = exports.TextVertex = void 0;
-exports.TextVertex = "#version 300 es\n\nin vec2 uv;\nin vec4 position;\nuniform mat4 projectionMatrix;\nuniform mat4 modelViewMatrix;\nout vec2 vUv;\n\nvoid main() {\n  vUv = uv;\n  gl_Position = projectionMatrix * modelViewMatrix * position;\n}";
-exports.TextFragment = "#version 300 es\n#ifdef GL_OES_standard_derivatives\n#extension GL_OES_standard_derivatives : enable\n#endif\n\nprecision highp float;\nuniform float opacity;\nuniform vec3 color;\nuniform sampler2D map;\nin vec2 vUv;\nout vec4 fragColor;\n\n#define alphaTest 1.0 / 255.0\n\nfloat median(float r, float g, float b) {\n  return max(min(r, g), min(max(r, g), b));\n}\n\nvoid main() {\n  vec3 img = texture(map, vUv).rgb;\n  float sigDist = median(img.r, img.g, img.b) - 0.5;\n  float alpha = clamp(sigDist/fwidth(sigDist) + 0.5, 0.0, 1.0);\n  fragColor = vec4(color.xyz, alpha * opacity);\n  if (fragColor.a < alphaTest) discard;\n}";
+export const TextVertex = `#version 300 es
+
+in vec2 uv;
+in vec4 position;
+uniform mat4 projectionMatrix;
+uniform mat4 modelViewMatrix;
+out vec2 vUv;
+
+void main() {
+  vUv = uv;
+  gl_Position = projectionMatrix * modelViewMatrix * position;
+}`;
+export const TextFragment = `#version 300 es
+#ifdef GL_OES_standard_derivatives
+#extension GL_OES_standard_derivatives : enable
+#endif
+
+precision highp float;
+uniform float opacity;
+uniform vec3 color;
+uniform sampler2D map;
+in vec2 vUv;
+out vec4 fragColor;
+
+#define alphaTest 1.0 / 255.0
+
+float median(float r, float g, float b) {
+  return max(min(r, g), min(max(r, g), b));
+}
+
+void main() {
+  vec3 img = texture(map, vUv).rgb;
+  float sigDist = median(img.r, img.g, img.b) - 0.5;
+  float alpha = clamp(sigDist/fwidth(sigDist) + 0.5, 0.0, 1.0);
+  fragColor = vec4(color.xyz, alpha * opacity);
+  if (fragColor.a < alphaTest) discard;
+}`;

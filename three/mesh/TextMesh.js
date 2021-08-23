@@ -1,32 +1,14 @@
-"use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-var three_1 = require("three");
-var TextGeometry_1 = require("../geometry/TextGeometry");
-var TextMaterial_1 = require("../materials/TextMaterial");
-var math_1 = require("../../utils/math");
-var TextMesh = (function (_super) {
-    __extends(TextMesh, _super);
-    function TextMesh() {
-        var _this = _super.call(this) || this;
-        _this.geometry = new TextGeometry_1.default();
-        _this.material = new TextMaterial_1.default(null);
-        _this.container = new three_1.Object3D();
-        _this.options = {
+import { Object3D, Mesh, Vector3, } from 'three';
+import TextGeometry from '../geometry/TextGeometry';
+import TextMaterial from '../materials/TextMaterial';
+import { normalize } from '../../utils/math';
+export default class TextMesh extends Object3D {
+    constructor() {
+        super();
+        this.geometry = new TextGeometry();
+        this.material = new TextMaterial(null);
+        this.container = new Object3D();
+        this.options = {
             align: 'left',
             flipY: true,
             font: undefined,
@@ -35,14 +17,13 @@ var TextMesh = (function (_super) {
             letterSpacing: 0,
             width: undefined,
         };
-        _this.add(_this.container);
-        _this.mesh = new three_1.Mesh(_this.geometry, _this.material);
-        _this.mesh.name = 'txtSprite';
-        _this.mesh.rotation.x = Math.PI;
-        _this.container.add(_this.mesh);
-        return _this;
+        this.add(this.container);
+        this.mesh = new Mesh(this.geometry, this.material);
+        this.mesh.name = 'txtSprite';
+        this.mesh.rotation.x = Math.PI;
+        this.container.add(this.mesh);
     }
-    TextMesh.prototype.update = function (options) {
+    update(options) {
         if (options.align !== undefined)
             this.options.align = options.align;
         if (options.flipY !== undefined)
@@ -58,7 +39,7 @@ var TextMesh = (function (_super) {
         if (options.width !== undefined)
             this.options.width = options.width;
         this.geometry.update(this.options);
-        var layout = this.geometry.layout;
+        const { layout } = this.geometry;
         this.mesh.position.y = layout.lineHeight - layout.height - 5;
         if (this.options.align === 'center') {
             this.mesh.position.x = -layout.width / 2;
@@ -66,93 +47,63 @@ var TextMesh = (function (_super) {
         else if (this.options.align === 'right') {
             this.mesh.position.x = -layout.width;
         }
-    };
-    TextMesh.prototype.checkToUpdate = function () {
+    }
+    checkToUpdate() {
         if (this.options.font !== undefined) {
             this.update(this.options);
         }
-    };
-    Object.defineProperty(TextMesh.prototype, "align", {
-        get: function () {
-            return this.options.align;
-        },
-        set: function (value) {
-            this.options.align = value;
-            this.checkToUpdate();
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(TextMesh.prototype, "color", {
-        get: function () {
-            return this.material.color;
-        },
-        set: function (value) {
-            if (Array.isArray(value)) {
-                this.material.color = new three_1.Vector3(value[0], value[1], value[2]);
-            }
-            else {
-                this.material.color = value;
-            }
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(TextMesh.prototype, "fontSize", {
-        get: function () {
-            return this.options.fontSize;
-        },
-        set: function (value) {
-            this.options.fontSize = value;
-            var scale = math_1.normalize(0, 42, value);
-            this.container.scale.setScalar(scale);
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(TextMesh.prototype, "map", {
-        get: function () {
-            return this.material.map;
-        },
-        set: function (value) {
-            this.material.map = value;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(TextMesh.prototype, "letterSpacing", {
-        get: function () {
-            return this.options.letterSpacing;
-        },
-        set: function (value) {
-            this.options.letterSpacing = value;
-            this.checkToUpdate();
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(TextMesh.prototype, "text", {
-        get: function () {
-            return this.options.text;
-        },
-        set: function (value) {
-            this.options.text = value;
-            this.checkToUpdate();
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(TextMesh.prototype, "width", {
-        get: function () {
-            return this.options.width;
-        },
-        set: function (value) {
-            this.options.width = value;
-            this.checkToUpdate();
-        },
-        enumerable: false,
-        configurable: true
-    });
-    return TextMesh;
-}(three_1.Object3D));
-exports.default = TextMesh;
+    }
+    get align() {
+        return this.options.align;
+    }
+    get color() {
+        return this.material.color;
+    }
+    get fontSize() {
+        return this.options.fontSize;
+    }
+    get map() {
+        return this.material.map;
+    }
+    get letterSpacing() {
+        return this.options.letterSpacing;
+    }
+    get text() {
+        return this.options.text;
+    }
+    get width() {
+        return this.options.width;
+    }
+    set align(value) {
+        this.options.align = value;
+        this.checkToUpdate();
+    }
+    set color(value) {
+        if (Array.isArray(value)) {
+            this.material.color = new Vector3(value[0], value[1], value[2]);
+        }
+        else {
+            this.material.color = value;
+        }
+    }
+    set fontSize(value) {
+        this.options.fontSize = value;
+        const scale = normalize(0, 42, value);
+        this.container.scale.setScalar(scale);
+    }
+    set map(value) {
+        this.material.map = value;
+    }
+    set letterSpacing(value) {
+        this.options.letterSpacing = value;
+        this.checkToUpdate();
+    }
+    set text(value) {
+        this.options.text = value;
+        this.checkToUpdate();
+    }
+    set width(value) {
+        this.options.width = value;
+        this.checkToUpdate();
+    }
+}

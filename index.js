@@ -1,91 +1,89 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var Ease_1 = require("./animation/timeline/Ease");
-var Keyframe_1 = require("./animation/timeline/Keyframe");
-var Marker_1 = require("./animation/timeline/Marker");
-var PlayMode_1 = require("./animation/timeline/PlayMode");
-var Timeline_1 = require("./animation/timeline/Timeline");
-var GLTFPlayer_1 = require("./animation/GLTFPlayer");
-var Smooth_1 = require("./animation/Smooth");
-var TextGeometry_1 = require("./three/geometry/TextGeometry");
-var font_1 = require("./three/glsl/font");
-var TextMaterial_1 = require("./three/materials/TextMaterial");
-var TextMesh_1 = require("./three/mesh/TextMesh");
-var debug_1 = require("./utils/debug");
-var dom_1 = require("./utils/dom");
-var loader_1 = require("./utils/loader");
-var math_1 = require("./utils/math");
-var raf_1 = require("./utils/raf");
-var three_1 = require("./utils/three");
-exports.default = {
-    ease: Ease_1.default,
-    Keyframe: Keyframe_1.default,
-    Marker: Marker_1.default,
-    PlayMode: PlayMode_1.default,
-    Timeline: Timeline_1.default,
-    GLTFPlayer: GLTFPlayer_1.default,
-    Smooth: Smooth_1.Smooth,
-    SmoothController: Smooth_1.SmoothController,
-    smoothing: Smooth_1.default,
-    TextGeometry: TextGeometry_1.default,
-    TextVertex: font_1.TextVertex,
-    TextFragment: font_1.TextFragment,
-    TextMaterial: TextMaterial_1.default,
-    TextMesh: TextMesh_1.default,
-    debug: debug_1.default,
-    isiPad: dom_1.isiPad,
-    isiPhone: dom_1.isiPhone,
-    isiOS: dom_1.isiOS,
-    isChrome: dom_1.isChrome,
-    isSafari: dom_1.isSafari,
-    isFirefox: dom_1.isFirefox,
-    isOpera: dom_1.isOpera,
-    isMobile: dom_1.isMobile,
-    hasUserMedia: dom_1.hasUserMedia,
-    supportsWebp: dom_1.supportsWebp,
-    delay: dom_1.delay,
-    fileName: dom_1.fileName,
-    guid: dom_1.guid,
-    loader: loader_1.default,
-    DEGREES: math_1.DEGREES,
-    RADIANS: math_1.RADIANS,
-    TWO_PI: math_1.TWO_PI,
-    HALF_PI: math_1.HALF_PI,
-    between: math_1.between,
-    clamp: math_1.clamp,
-    normalize: math_1.normalize,
-    mix: math_1.mix,
-    map: math_1.map,
-    roundTo: math_1.roundTo,
-    distance: math_1.distance,
-    distance2: math_1.distance2,
-    distance3: math_1.distance3,
-    random: math_1.random,
-    getAngle: math_1.getAngle,
-    toDeg: math_1.toDeg,
-    toRad: math_1.toRad,
-    cosRange: math_1.cosRange,
-    precisionComplete: math_1.precisionComplete,
-    cubicBezier: math_1.cubicBezier,
-    mixArrays: math_1.mixArrays,
-    raf: raf_1.default,
-    orthoCamera: three_1.orthoCamera,
-    plane: three_1.plane,
-    triangle: three_1.triangle,
-    dispose: three_1.dispose,
-    findObjectsWithName: three_1.findObjectsWithName,
-    anchorGeometry: three_1.anchorGeometry,
-    anchorGeometryTL: three_1.anchorGeometryTL,
-    setBlendNormal: three_1.setBlendNormal,
-    setBlendAdd: three_1.setBlendAdd,
-    setBlendMultiply: three_1.setBlendMultiply,
-    setBlendScreen: three_1.setBlendScreen,
-    FBO: three_1.FBO,
-    DoubleFBO: three_1.DoubleFBO,
-    Pass: three_1.Pass,
-    updateTextureData: three_1.updateTextureData,
-    compileShader: three_1.compileShader,
-    RawShader: three_1.RawShader,
-    updateCameraPerspective: three_1.updateCameraPerspective,
-    updateCameraOrtho: three_1.updateCameraOrtho
+import ease from './animation/timeline/Ease';
+import Keyframe from './animation/timeline/Keyframe';
+import Marker from './animation/timeline/Marker';
+import PlayMode from './animation/timeline/PlayMode';
+import Timeline from './animation/timeline/Timeline';
+import GLTFPlayer from './animation/GLTFPlayer';
+import smoothing, { Smooth, SmoothController } from './animation/Smooth';
+import TextGeometry from './three/geometry/TextGeometry';
+import { TextVertex, TextFragment } from './three/glsl/font';
+import TextMaterial from './three/materials/TextMaterial';
+import TextMesh from './three/mesh/TextMesh';
+import debug from './utils/debug';
+import { isiPad, isiPhone, isiOS, isChrome, isSafari, isFirefox, isOpera, isMobile, hasUserMedia, supportsWebp, delay, fileName, guid } from './utils/dom';
+import loader from './utils/loader';
+import { DEGREES, RADIANS, TWO_PI, HALF_PI, between, clamp, normalize, mix, map, roundTo, distance, distance2, distance3, random, getAngle, toDeg, toRad, cosRange, precisionComplete, cubicBezier, mixArrays } from './utils/math';
+import raf from './utils/raf';
+import { orthoCamera, plane, triangle, dispose, findObjectsWithName, anchorGeometry, anchorGeometryTL, setBlendNormal, setBlendAdd, setBlendMultiply, setBlendScreen, FBO, DoubleFBO, Pass, updateTextureData, compileShader, RawShader, updateCameraPerspective, updateCameraOrtho } from './utils/three';
+export default {
+    ease,
+    Keyframe,
+    Marker,
+    PlayMode,
+    Timeline,
+    GLTFPlayer,
+    Smooth,
+    SmoothController,
+    smoothing,
+    TextGeometry,
+    TextVertex,
+    TextFragment,
+    TextMaterial,
+    TextMesh,
+    debug,
+    isiPad,
+    isiPhone,
+    isiOS,
+    isChrome,
+    isSafari,
+    isFirefox,
+    isOpera,
+    isMobile,
+    hasUserMedia,
+    supportsWebp,
+    delay,
+    fileName,
+    guid,
+    loader,
+    DEGREES,
+    RADIANS,
+    TWO_PI,
+    HALF_PI,
+    between,
+    clamp,
+    normalize,
+    mix,
+    map,
+    roundTo,
+    distance,
+    distance2,
+    distance3,
+    random,
+    getAngle,
+    toDeg,
+    toRad,
+    cosRange,
+    precisionComplete,
+    cubicBezier,
+    mixArrays,
+    raf,
+    orthoCamera,
+    plane,
+    triangle,
+    dispose,
+    findObjectsWithName,
+    anchorGeometry,
+    anchorGeometryTL,
+    setBlendNormal,
+    setBlendAdd,
+    setBlendMultiply,
+    setBlendScreen,
+    FBO,
+    DoubleFBO,
+    Pass,
+    updateTextureData,
+    compileShader,
+    RawShader,
+    updateCameraPerspective,
+    updateCameraOrtho
 };
