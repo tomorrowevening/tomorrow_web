@@ -305,45 +305,39 @@ function updateTextureData(svgElement, imgWid, imgHei) {
     });
 }
 exports.updateTextureData = updateTextureData;
-var RawShader = (function (_super) {
-    __extends(RawShader, _super);
-    function RawShader(opts) {
-        var _this = this;
-        var precision = opts.precision !== undefined ? opts.precision : 'highp';
-        var precisionInjection = "precision " + precision + " float;";
-        var shaderName = "#define SHADER_NAME " + opts.name;
-        var vertName = opts.vertex.search('SHADER_NAME') > 0 ? '' : shaderName + "Vert";
-        var fragName = opts.fragment.search('SHADER_NAME') > 0 ? '' : shaderName + "Frag";
-        var vertex = [
-            precisionInjection,
-            vertName,
-            opts.vertex
-        ].join('\n');
-        var fragment = [
-            precisionInjection,
-            fragName,
-            opts.fragment
-        ].join('\n');
-        var shader = {
-            name: opts.name,
-            uniforms: opts.uniforms,
-            vertexShader: vertex,
-            fragmentShader: fragment,
-            glslVersion: null
-        };
-        for (var i in opts) {
-            if (i !== 'vertex' && i !== 'fragment' && i !== 'webgl2') {
-                shader[i] = opts[i];
-            }
+function RawShader(opts) {
+    var precision = opts.precision !== undefined ? opts.precision : 'highp';
+    var precisionInjection = "precision " + precision + " float;";
+    var shaderName = "#define SHADER_NAME " + opts.name;
+    var vertName = opts.vertex.search('SHADER_NAME') > 0 ? '' : shaderName + "Vert";
+    var fragName = opts.fragment.search('SHADER_NAME') > 0 ? '' : shaderName + "Frag";
+    var vertex = [
+        precisionInjection,
+        vertName,
+        opts.vertex
+    ].join('\n');
+    var fragment = [
+        precisionInjection,
+        fragName,
+        opts.fragment
+    ].join('\n');
+    var shader = {
+        name: opts.name,
+        uniforms: opts.uniforms,
+        vertexShader: vertex,
+        fragmentShader: fragment,
+        glslVersion: null
+    };
+    for (var i in opts) {
+        if (i !== 'vertex' && i !== 'fragment' && i !== 'webgl2') {
+            shader[i] = opts[i];
         }
-        if (WebGL_1.WEBGL.isWebGL2Available() && opts.webgl2 === true) {
-            shader.vertexShader = compileShader(vertex, false);
-            shader.fragmentShader = compileShader(fragment);
-            shader.glslVersion = three_1.GLSL3;
-        }
-        _this = _super.call(this, shader) || this;
-        return _this;
     }
-    return RawShader;
-}(three_1.RawShaderMaterial));
+    if (WebGL_1.WEBGL.isWebGL2Available() && opts.webgl2 === true) {
+        shader.vertexShader = compileShader(vertex, false);
+        shader.fragmentShader = compileShader(fragment);
+        shader.glslVersion = three_1.GLSL3;
+    }
+    return shader;
+}
 exports.RawShader = RawShader;

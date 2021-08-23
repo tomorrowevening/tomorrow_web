@@ -1,4 +1,4 @@
-import { Blending, BufferGeometry, IUniform, Material, Mesh, Object3D, OrthographicCamera, PerspectiveCamera, Plane, PlaneBufferGeometry, RawShaderMaterial, Scene, Texture, WebGLRenderTarget } from 'three';
+import { Blending, BufferGeometry, IUniform, Material, Mesh, Object3D, OrthographicCamera, PerspectiveCamera, Plane, PlaneBufferGeometry, Scene, Texture, WebGLRenderTarget } from 'three';
 export declare const orthoCamera: OrthographicCamera;
 export declare const plane: PlaneBufferGeometry;
 export declare const triangle: BufferGeometry;
@@ -91,8 +91,14 @@ interface ShaderParams {
     };
     webgl2?: boolean;
 }
-export declare class RawShader extends RawShaderMaterial {
-    constructor(opts: ShaderParams);
-}
+export declare function RawShader(opts: ShaderParams): {
+    name: string;
+    uniforms: {
+        [uniform: string]: IUniform<any>;
+    };
+    vertexShader: string;
+    fragmentShader: string;
+    glslVersion: any;
+};
 export {};
 //# sourceMappingURL=three.d.ts.map

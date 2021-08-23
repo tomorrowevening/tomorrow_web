@@ -7,6 +7,10 @@ var PlayMode_1 = require("./animation/timeline/PlayMode");
 var Timeline_1 = require("./animation/timeline/Timeline");
 var GLTFPlayer_1 = require("./animation/GLTFPlayer");
 var Smooth_1 = require("./animation/Smooth");
+var TextGeometry_1 = require("./three/geometry/TextGeometry");
+var font_1 = require("./three/glsl/font");
+var TextMaterial_1 = require("./three/materials/TextMaterial");
+var TextMesh_1 = require("./three/mesh/TextMesh");
 var debug_1 = require("./utils/debug");
 var dom_1 = require("./utils/dom");
 var loader_1 = require("./utils/loader");
@@ -23,6 +27,11 @@ exports.default = {
     Smooth: Smooth_1.Smooth,
     SmoothController: Smooth_1.SmoothController,
     smoothing: Smooth_1.default,
+    TextGeometry: TextGeometry_1.default,
+    TextVertex: font_1.TextVertex,
+    TextFragment: font_1.TextFragment,
+    TextMaterial: TextMaterial_1.default,
+    TextMesh: TextMesh_1.default,
     debug: debug_1.default,
     isiPad: dom_1.isiPad,
     isiPhone: dom_1.isiPhone,

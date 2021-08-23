@@ -6,6 +6,11 @@ import PlayMode from './animation/timeline/PlayMode';
 import Timeline from './animation/timeline/Timeline';
 import GLTFPlayer from './animation/GLTFPlayer';
 import smoothing, { Smooth, SmoothController } from './animation/Smooth';
+// Three
+import TextGeometry from './three/geometry/TextGeometry';
+import { TextVertex, TextFragment } from './three/glsl/font';
+import TextMaterial from './three/materials/TextMaterial';
+import TextMesh from './three/mesh/TextMesh';
 // Utils
 import debug from './utils/debug';
 import {
@@ -80,6 +85,12 @@ export default {
   Smooth,
   SmoothController,
   smoothing,
+  // Three
+  TextGeometry,
+  TextVertex,
+  TextFragment,
+  TextMaterial,
+  TextMesh,
   // Utils
   debug,
   isiPad,
