@@ -9,7 +9,7 @@ import TextMaterial from './three/materials/TextMaterial';
 import TextMesh from './three/mesh/TextMesh';
 import { delay, fileName, guid } from './utils/dom';
 import { between, clamp, normalize, mix, map, roundTo, distance, distance2, distance3, random, getAngle, toDeg, toRad, cosRange, precisionComplete, cubicBezier, mixArrays } from './utils/math';
-import { dispose, findObjectsWithName, anchorGeometry, anchorGeometryTL, setBlendNormal, setBlendAdd, setBlendMultiply, setBlendScreen, FBO, DoubleFBO, Pass, updateTextureData, compileShader, RawShader, updateCameraPerspective, updateCameraOrtho } from './utils/three';
+import { findObjectsWithName, anchorGeometry, anchorGeometryTL, setBlendNormal, setBlendAdd, setBlendMultiply, setBlendScreen, FBO, DoubleFBO, Pass, updateTextureData, compileShader, RawShader, updateCameraPerspective, updateCameraOrtho } from './utils/three';
 declare const _default: {
     ease: {
         LINEAR: string;
@@ -94,7 +94,7 @@ declare const _default: {
     orthoCamera: import("three").OrthographicCamera;
     plane: import("three").PlaneGeometry;
     triangle: import("three").BufferGeometry;
-    dispose: typeof dispose;
+    dispose: (object: import("three").Object3D) => void;
     findObjectsWithName: typeof findObjectsWithName;
     anchorGeometry: typeof anchorGeometry;
     anchorGeometryTL: typeof anchorGeometryTL;
