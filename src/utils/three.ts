@@ -23,6 +23,7 @@ import {
   PerspectiveCamera,
   Plane,
   PlaneBufferGeometry,
+  PositionalAudio,
   RawShaderMaterial,
   RGBAFormat,
   Scene,
@@ -61,29 +62,82 @@ triangle.setAttribute('uv', new Float32BufferAttribute([
   0, 0, 2
 ], 2));
 
-/**
- * Disposes an item and it's children from memory
- * @param object The item to be removed
- */
-export function dispose(object: Object3D | Mesh) {
-  while (object.children.length > 0) {
-    dispose(object.children[0]);
+// Dispose texture
+export const disposeTexture = (texture) => {
+  texture?.dispose();
+}
+
+// Dispose material
+export const disposeMaterial = (material) => {
+  if (!material) return;
+
+  let materialArr = [];
+
+  if (Array.isArray(material)) {
+    materialArr = material;
+  } else {
+    materialArr[0] = material;
   }
-  if (object.parent) object.parent.remove(object);
-  if (object instanceof Mesh) {
-    // @ts-ignore
-    if (object.geometry) object.geometry.dispose();
-    // @ts-ignore
-    if (object.material) {
-      // @ts-ignore
-      if (object.material.map) {
-        // @ts-ignore
-        object.material.map.dispose();
+
+  materialArr.forEach((materialElement) => {
+    const {
+      alphaMap,
+      displacementMap,
+      emissiveMap,
+      envMap,
+      lightMap,
+      map,
+      bumpMap,
+      aoMap,
+      metalnessMap,
+      roughnessMap,
+      normalMap,
+    } = materialElement;
+
+    disposeTexture(alphaMap);
+    disposeTexture(displacementMap);
+    disposeTexture(emissiveMap);
+    disposeTexture(envMap);
+    disposeTexture(lightMap);
+    disposeTexture(map);
+    disposeTexture(bumpMap);
+    disposeTexture(aoMap);
+    disposeTexture(metalnessMap);
+    disposeTexture(roughnessMap);
+    disposeTexture(normalMap);
+    materialElement?.dispose();
+  })
+}
+
+// Dispose object
+export const dispose = (object: Object3D) => {
+  if (!object) return;
+
+  // Dispose children
+  while (object.children.length > 0) {
+    const child = object.children[0];
+    if (child instanceof PositionalAudio) {
+      child.pause();
+      if (child.parent) {
+        child.parent.remove(child);
       }
-      // @ts-ignore
-      object.material.dispose();
+    } else {
+      dispose(child);
     }
   }
+
+  // Dispose object
+  if (object.parent) object.parent.remove(object);
+  // @ts-ignore
+  if (object.isMesh) {
+    // @ts-ignore
+    object.geometry?.dispose();
+    // @ts-ignore
+    disposeMaterial(object.material);
+  }
+
+  // @ts-ignore
+  if (object.dispose !== undefined) object.dispose();
 }
 
 /**
@@ -91,16 +145,16 @@ export function dispose(object: Object3D | Mesh) {
  * @param {THREE.PerspectiveCamera} camera
  * @param {Number} width Screen width
  * @param {Number} height Screen height
- * @param {Number} aspect Screen aspect ratio
+ * @param {Number} distance Distance to the object to focus on
  */
- export function updateCameraPerspective(
+export function updateCameraPerspective(
   camera: PerspectiveCamera,
   width: number,
-  height: number
+  height: number,
+  distance: number
 ) {
   const aspect = width / height;
-  const dist = Math.abs(camera.position.z);
-	const fov = 2 * Math.atan(width / aspect / (2 * dist)) * (180 / Math.PI);
+	const fov = 2 * Math.atan(width / aspect / (2 * distance)) * (180 / Math.PI);
 	camera.fov = fov;
 	camera.aspect = aspect;
 	camera.updateProjectionMatrix();

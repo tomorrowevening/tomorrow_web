@@ -163,6 +163,23 @@ export function precisionComplete(current: number, destination: number, precisio
   return current < destination + precision && current > destination - precision;
 }
 
+/**
+ * Referenced from: http://www.rorydriscoll.com/2016/03/07/frame-rate-independent-damping-using-lerp/
+ */
+export function damp(start: number, end: number, easing: number, dt: number) {
+  return mix(start, end, 1 - Math.exp(-easing * dt));
+}
+
+export function euclideanModulo(value: number, mod: number) {
+  return ((value % mod) + mod) % mod;
+}
+
+export function shortestAngleDiff(radians: number) {
+  while (radians > Math.PI) radians -= TWO_PI;
+  while (radians < -Math.PI) radians += TWO_PI;
+  return radians;
+}
+
 // Bezier
 
 function isLinear(x0: number, y0: number, x1: number, y1: number): boolean {

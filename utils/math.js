@@ -53,6 +53,19 @@ export function cosRange(degrees, range, min) {
 export function precisionComplete(current, destination, precision) {
     return current < destination + precision && current > destination - precision;
 }
+export function damp(start, end, easing, dt) {
+    return mix(start, end, 1 - Math.exp(-easing * dt));
+}
+export function euclideanModulo(value, mod) {
+    return ((value % mod) + mod) % mod;
+}
+export function shortestAngleDiff(radians) {
+    while (radians > Math.PI)
+        radians -= TWO_PI;
+    while (radians < -Math.PI)
+        radians += TWO_PI;
+    return radians;
+}
 function isLinear(x0, y0, x1, y1) {
     return x0 === y0 && x1 === y1;
 }
