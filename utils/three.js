@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { AddEquation, BufferGeometry, ClampToEdgeWrapping, CustomBlending, DstColorFactor, Float32BufferAttribute, FloatType, GLSL3, HalfFloatType, LinearFilter, Matrix4, Mesh, NormalBlending, OneFactor, OneMinusDstColorFactor, OneMinusSrcAlphaFactor, OrthographicCamera, PlaneBufferGeometry, RGBAFormat, Scene, SrcAlphaFactor, Texture, WebGLRenderTarget, } from 'three';
+import { AddEquation, BufferGeometry, ClampToEdgeWrapping, CustomBlending, DstColorFactor, Float32BufferAttribute, FloatType, GLSL3, HalfFloatType, LinearFilter, Matrix4, Mesh, NormalBlending, OneFactor, OneMinusDstColorFactor, OneMinusSrcAlphaFactor, OrthographicCamera, PlaneBufferGeometry, PositionalAudio, RGBAFormat, Scene, SrcAlphaFactor, Texture, WebGLRenderTarget, } from 'three';
 import { WEBGL } from 'three/examples/jsm/WebGL';
 import { isiOS } from './dom';
 export const orthoCamera = new OrthographicCamera(-0.5, 0.5, 0.5, -0.5, 0, 1);
@@ -26,27 +26,63 @@ triangle.setAttribute('uv', new Float32BufferAttribute([
     0, 0, 2,
     0, 0, 2
 ], 2));
-export function dispose(object) {
+export const disposeTexture = (texture) => {
+    texture === null || texture === void 0 ? void 0 : texture.dispose();
+};
+export const disposeMaterial = (material) => {
+    if (!material)
+        return;
+    let materialArr = [];
+    if (Array.isArray(material)) {
+        materialArr = material;
+    }
+    else {
+        materialArr[0] = material;
+    }
+    materialArr.forEach((materialElement) => {
+        const { alphaMap, displacementMap, emissiveMap, envMap, lightMap, map, bumpMap, aoMap, metalnessMap, roughnessMap, normalMap, } = materialElement;
+        disposeTexture(alphaMap);
+        disposeTexture(displacementMap);
+        disposeTexture(emissiveMap);
+        disposeTexture(envMap);
+        disposeTexture(lightMap);
+        disposeTexture(map);
+        disposeTexture(bumpMap);
+        disposeTexture(aoMap);
+        disposeTexture(metalnessMap);
+        disposeTexture(roughnessMap);
+        disposeTexture(normalMap);
+        materialElement === null || materialElement === void 0 ? void 0 : materialElement.dispose();
+    });
+};
+export const dispose = (object) => {
+    var _a;
+    if (!object)
+        return;
     while (object.children.length > 0) {
-        dispose(object.children[0]);
+        const child = object.children[0];
+        if (child instanceof PositionalAudio) {
+            child.pause();
+            if (child.parent) {
+                child.parent.remove(child);
+            }
+        }
+        else {
+            dispose(child);
+        }
     }
     if (object.parent)
         object.parent.remove(object);
-    if (object instanceof Mesh) {
-        if (object.geometry)
-            object.geometry.dispose();
-        if (object.material) {
-            if (object.material.map) {
-                object.material.map.dispose();
-            }
-            object.material.dispose();
-        }
+    if (object.isMesh) {
+        (_a = object.geometry) === null || _a === void 0 ? void 0 : _a.dispose();
+        disposeMaterial(object.material);
     }
-}
-export function updateCameraPerspective(camera, width, height) {
+    if (object.dispose !== undefined)
+        object.dispose();
+};
+export function updateCameraPerspective(camera, width, height, distance) {
     const aspect = width / height;
-    const dist = Math.abs(camera.position.z);
-    const fov = 2 * Math.atan(width / aspect / (2 * dist)) * (180 / Math.PI);
+    const fov = 2 * Math.atan(width / aspect / (2 * distance)) * (180 / Math.PI);
     camera.fov = fov;
     camera.aspect = aspect;
     camera.updateProjectionMatrix();
