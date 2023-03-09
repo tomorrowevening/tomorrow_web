@@ -32,28 +32,12 @@ export const disposeTexture = (texture) => {
 export const disposeMaterial = (material) => {
     if (!material)
         return;
-    let materialArr = [];
     if (Array.isArray(material)) {
-        materialArr = material;
+        material.forEach((mat) => mat.dispose());
     }
     else {
-        materialArr[0] = material;
+        material.dispose();
     }
-    materialArr.forEach((materialElement) => {
-        const { alphaMap, displacementMap, emissiveMap, envMap, lightMap, map, bumpMap, aoMap, metalnessMap, roughnessMap, normalMap, } = materialElement;
-        disposeTexture(alphaMap);
-        disposeTexture(displacementMap);
-        disposeTexture(emissiveMap);
-        disposeTexture(envMap);
-        disposeTexture(lightMap);
-        disposeTexture(map);
-        disposeTexture(bumpMap);
-        disposeTexture(aoMap);
-        disposeTexture(metalnessMap);
-        disposeTexture(roughnessMap);
-        disposeTexture(normalMap);
-        materialElement === null || materialElement === void 0 ? void 0 : materialElement.dispose();
-    });
 };
 export const dispose = (object) => {
     var _a;
@@ -74,8 +58,9 @@ export const dispose = (object) => {
     if (object.parent)
         object.parent.remove(object);
     if (object.isMesh) {
-        (_a = object.geometry) === null || _a === void 0 ? void 0 : _a.dispose();
-        disposeMaterial(object.material);
+        const mesh = object;
+        (_a = mesh.geometry) === null || _a === void 0 ? void 0 : _a.dispose();
+        disposeMaterial(mesh.material);
     }
     if (object.dispose !== undefined)
         object.dispose();

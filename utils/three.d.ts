@@ -2,8 +2,8 @@ import { Blending, BufferGeometry, IUniform, Material, Mesh, Object3D, Orthograp
 export declare const orthoCamera: OrthographicCamera;
 export declare const plane: PlaneBufferGeometry;
 export declare const triangle: BufferGeometry;
-export declare const disposeTexture: (texture: any) => void;
-export declare const disposeMaterial: (material: any) => void;
+export declare const disposeTexture: (texture?: Texture) => void;
+export declare const disposeMaterial: (material?: Material | Material[]) => void;
 export declare const dispose: (object: Object3D) => void;
 export declare function updateCameraPerspective(camera: PerspectiveCamera, width: number, height: number, distance: number): void;
 export declare function updateCameraOrtho(camera: OrthographicCamera, width: number, height: number): void;

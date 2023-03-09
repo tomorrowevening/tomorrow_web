@@ -63,81 +63,49 @@ triangle.setAttribute('uv', new Float32BufferAttribute([
 ], 2));
 
 // Dispose texture
-export const disposeTexture = (texture) => {
-  texture?.dispose();
+export const disposeTexture = (texture?: Texture): void => {
+  texture?.dispose()
 }
 
 // Dispose material
-export const disposeMaterial = (material) => {
-  if (!material) return;
-
-  let materialArr = [];
+export const disposeMaterial = (material?: Material | Material[]): void => {
+  if (!material) return
 
   if (Array.isArray(material)) {
-    materialArr = material;
+    material.forEach((mat: Material) => mat.dispose())
   } else {
-    materialArr[0] = material;
+    material.dispose()
   }
-
-  materialArr.forEach((materialElement) => {
-    const {
-      alphaMap,
-      displacementMap,
-      emissiveMap,
-      envMap,
-      lightMap,
-      map,
-      bumpMap,
-      aoMap,
-      metalnessMap,
-      roughnessMap,
-      normalMap,
-    } = materialElement;
-
-    disposeTexture(alphaMap);
-    disposeTexture(displacementMap);
-    disposeTexture(emissiveMap);
-    disposeTexture(envMap);
-    disposeTexture(lightMap);
-    disposeTexture(map);
-    disposeTexture(bumpMap);
-    disposeTexture(aoMap);
-    disposeTexture(metalnessMap);
-    disposeTexture(roughnessMap);
-    disposeTexture(normalMap);
-    materialElement?.dispose();
-  })
 }
 
 // Dispose object
-export const dispose = (object: Object3D) => {
-  if (!object) return;
+export const dispose = (object: Object3D): void => {
+  if (!object) return
 
   // Dispose children
   while (object.children.length > 0) {
-    const child = object.children[0];
+    const child = object.children[0]
     if (child instanceof PositionalAudio) {
-      child.pause();
+      child.pause()
       if (child.parent) {
-        child.parent.remove(child);
+        child.parent.remove(child)
       }
     } else {
-      dispose(child);
+      dispose(child)
     }
   }
 
   // Dispose object
-  if (object.parent) object.parent.remove(object);
+  if (object.parent) object.parent.remove(object)
   // @ts-ignore
   if (object.isMesh) {
-    // @ts-ignore
-    object.geometry?.dispose();
-    // @ts-ignore
-    disposeMaterial(object.material);
+    const mesh = object as Mesh
+    mesh.geometry?.dispose()
+    disposeMaterial(mesh.material)
   }
 
   // @ts-ignore
-  if (object.dispose !== undefined) object.dispose();
+  if (object.dispose !== undefined) object.dispose()
 }
 
 /**
@@ -154,10 +122,10 @@ export function updateCameraPerspective(
   distance: number
 ) {
   const aspect = width / height;
-	const fov = 2 * Math.atan(width / aspect / (2 * distance)) * (180 / Math.PI);
-	camera.fov = fov;
-	camera.aspect = aspect;
-	camera.updateProjectionMatrix();
+  const fov = 2 * Math.atan(width / aspect / (2 * distance)) * (180 / Math.PI);
+  camera.fov = fov;
+  camera.aspect = aspect;
+  camera.updateProjectionMatrix();
 }
 
 /**
@@ -172,13 +140,13 @@ export function updateCameraOrtho(
   width: number,
   height: number
 ) {
-	camera.left = width / -2;
-	camera.right = width / 2;
-	camera.top = height / 2;
-	camera.bottom = height / -2;
-	camera.position.x = width / 2;
-	camera.position.y = height / -2;
-	camera.updateProjectionMatrix();
+  camera.left = width / -2;
+  camera.right = width / 2;
+  camera.top = height / 2;
+  camera.bottom = height / -2;
+  camera.position.x = width / 2;
+  camera.position.y = height / -2;
+  camera.updateProjectionMatrix();
 }
 
 /**
